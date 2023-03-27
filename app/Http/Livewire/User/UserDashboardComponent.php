@@ -12,7 +12,7 @@ class UserDashboardComponent extends Component
     {
         $orders = Order::orderBy('created_at','DESC')->where('user_id',Auth::user()->id)->get()->take(10);
         $totalcost = Order::where('status','!=','canceled')->where('user_id',Auth::user()->id)->sum('total');
-        $totalPurchase = Order::where('status','!=','canceled')->where('user_id',Auth::user()->id)->count();
+        $totalPurchase = Order::where('status','=','ordered')->where('user_id',Auth::user()->id)->count();
         $totalDelivered = Order::where('status','delivered')->where('user_id',Auth::user()->id)->count();
         $totalCanceled= Order::where('status','canceled')->where('user_id',Auth::user()->id)->count();
         return view('livewire.user.user-dashboard-component',[

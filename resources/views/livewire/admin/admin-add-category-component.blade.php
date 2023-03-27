@@ -48,8 +48,22 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label">Icon de la Category</label>
+                                <div class="col-md-4">
+                                    <input type="file" class="input-file" wire:model="icon" />
+                                    @if($icon)
+                                    <img src="{{$icon->temporaryUrl()}}" width="120" />
+                                    @endif
+                                    @error('icon') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
+                                                                  
                                     <button type="submit" class="btn btn-primary">Valider</button>
                                 </div>
                             </div>

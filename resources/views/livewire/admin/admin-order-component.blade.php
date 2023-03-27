@@ -21,7 +21,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Id Commande</th>
+                                    <th>#</th>
                                     <th>Sous Total</th>
                                     <th>Reduction</th>
                                     <th>Tax</th>

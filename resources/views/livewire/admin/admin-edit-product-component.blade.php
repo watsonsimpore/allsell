@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Prix de Vente</label>
+                        <label class="col-md-4 control-label">Prix de Promo</label>
                         <div class="col-md-4">
                            <input type="text" placeholder="Prix de Vente" class="form-control input-md" wire:model="sale_price"/>
                            @error('sale_price') <p class ="text-danger">{{$message}}</p> @enderror

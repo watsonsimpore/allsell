@@ -15,16 +15,16 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('phone');
-            $table->string('phone2');
-            $table->string('adress');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('phone2')->nullable();
+            $table->string('adress')->nullable();
             $table->string('map')->nullable();
-            $table->string('twitter');
-            $table->string('facebook');            
-            $table->string('pinterest');
-            $table->string('instagram');
-            $table->string('youtube');
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();            
+            $table->string('pinterest')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('youtube')->nullable();
             $table->timestamps();
         });
     }

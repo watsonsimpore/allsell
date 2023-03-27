@@ -190,7 +190,7 @@
 								<label class="payment-method">
 									<input name="payment-method" id="payment-method-visa" value="card" type="radio" wire:model="paymentmode">
 									<span>Debit / Credit Card</span>
-									<span class="payment-desc">Il ya plusieurs mode disponible</span>
+									<span class="payment-desc">Payez via votre Carte de credit</span>
 								</label>
 								<label class="payment-method">
 									<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio" wire:model="paymentmode">

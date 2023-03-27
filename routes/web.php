@@ -1,10 +1,12 @@
 <?php
 use App\Models\Order;
+use App\Http\Livewire\Chat\Main;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Chat\CreateChat;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\AboutUsComponent;
 use App\Http\Livewire\ContactComponent;
@@ -18,12 +20,14 @@ use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserReviewComponent;
 use App\Http\Livewire\Admin\AdminOrderComponent;
 use App\Http\Livewire\User\UserProfileComponent;
+use App\Http\Livewire\Admin\UserManagerComponent;
 use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminSettingComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\HebomandaireProduitComponent;
 use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\User\UserEditProfileComponent;
@@ -40,8 +44,14 @@ use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\Admin\AdminAddAttributesComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
+use App\Http\Livewire\Admin\AdminAddShortSliderComponent;
 use App\Http\Livewire\Admin\AdminEditAttributesComponent;
 use App\Http\Livewire\Admin\AdminEditHomeSliderComponent;
+use App\Http\Livewire\Admin\AdminAddLastedBannerComponent;
+use App\Http\Livewire\Admin\AdminEditShortSliderComponent;
+use App\Http\Livewire\Admin\AdminEditLastedBannerComponent;
+use App\Http\Livewire\Admin\AdminAddHomeCategoryBannerComponent;
+use App\Http\Livewire\Admin\AdminEditHomeCategoryBannerComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,10 +94,18 @@ Route::get('/thankyou', ThankyouComponent::class)->name('thankyou');
 
 Route::get('/contact-us', ContactComponent::class)->name('contact');
 
+Route::get('/produit/hebdomadaire', HebomandaireProduitComponent::class)->name('hebdomadaire');
+
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
 // })->name('dashboard');
+
+
+//livewire Chat
+
+Route::get('/discuss-list',CreateChat::class)->name('discuss-list');
+Route::get('/chat{key?}',Main::class)->name('chat');
 
 // Pour Utilisateur ou Client
 Route::middleware(['auth:sanctum','verified'])->group(function(){
@@ -107,13 +125,23 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.categories');
     Route::get('/admin/category/add',AdminAddCategoryComponent::class)->name('admin.addcategory');
     Route::get('/admin/category/edit/{category_slug}/{scategory_slug?}',AdminEditCategoryComponent::class)->name('admin.editcategory');
-    Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');  
+    Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
     Route::get('/admin/product/add',AdminAddProductComponent::class)->name('admin.addproduct');
     Route::get('/admin/product/edit/{product_slug}',AdminEditProductComponent::class)->name('admin.editproduct');
 
     Route::get('/admin/slider',AdminHomeSliderComponent::class)->name('admin.homeslider');
     Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
     Route::get('/admin/slider/edit/{slide_id}',AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
+
+    Route::get('/admin/shortslider/add',AdminAddShortSliderComponent::class)->name('admin.addshortslider');
+    Route::get('/admin/shortslider/edit/{s_slide_id}',AdminEditShortSliderComponent::class)->name('admin.editshortslider');
+
+    Route::get('/admin/lastedbanner/add',AdminAddLastedBannerComponent::class)->name('admin.addlastedbaner');
+    Route::get('/admin/lastedbanner/edit/{lastedbanner_id}',AdminEditLastedBannerComponent::class)->name('admin.editlastedbanner');
+
+    Route::get('/admin/homecategorybanner/add',AdminAddHomeCategoryBannerComponent::class)->name('admin.addhomecategorybanner');
+    Route::get('/admin/homecategorybanner/edit/{homecategorybanner_id}',AdminEditHomeCategoryBannerComponent::class)->name('admin.edithomecategorybanner');
+
 
     Route::get('/admin/home-categories',AdminHomeCategoryComponent::class)->name('admin.homecategories');
     Route::get('/admin/sale',AdminSaleComponent::class)->name('admin.sale');
@@ -128,6 +156,7 @@ Route::middleware(['auth:sanctum','verified','authadmin'])->group(function(){
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
 
     Route::get('admin/settings', AdminSettingComponent::class)->name('admin.settings');
+    Route::get('admin/user_manager', UserManagerComponent::class)->name('admin.user_manager');
 
     Route::get('/admin/attributes',AdminAttributesComponent::class)->name('admin.attributes');
     Route::get('/admin/attribute/add',AdminAddAttributesComponent::class)->name('admin.add_attributes');

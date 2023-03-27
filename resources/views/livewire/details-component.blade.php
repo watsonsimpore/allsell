@@ -36,7 +36,7 @@
 												<img src="{{ asset('assets/images/products') }}/{{$image}}" alt="{{$product->name}}" />
 											</li>
 										@endif
-									@endforeach		    
+									@endforeach
 							  </ul>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 								@php
 									$avgrating = 0;
 								@endphp
-								@foreach($product->orderItems->where('rstatus',1) as $orderItem)									
+								@foreach($product->orderItems->where('rstatus',1) as $orderItem)
 									@php
 										$avgrating = $avgrating + $orderItem->review->rating;
 									@endphp
@@ -61,19 +61,19 @@
 									@else
 										<i class="fa fa-star color-gray" aria-hidden="true"></i>
 									@endif
-								@endfor                                
+								@endfor
                                 <a href="#" class="count-review">({{$product->orderItems->where('rstatus',1)->count()}} avis)</a>
                             </div>
                             <h2 class="product-name">{{$product->name}}</h2>
                             <div class="short-desc">
 								{!! $product->short_description !!}
-                            </div>                            
+                            </div>
 							@if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                             	<div class="wrap-price">
 									<span class="product-price">{{$product->sale_price}}</span>
 									<del><span class="product-price regprice">{{$product->regular_price}} FCFA</pan></del>
-								</div>							
-							@else							
+								</div>
+							@else
                             	<div class="wrap-price"><span class="product-price">{{$product->regular_price}} FCFA</span></div>
 							@endif
                             <div class="stock-info in-stock">
@@ -97,11 +97,11 @@
 								@endforeach
 							</div>
 
-                            <div class="quantity" style="margin-top: 10px;">								
+                            <div class="quantity" style="margin-top: 10px;">
                             	<span>Quantité: {{$product->quantity}}</span>
 								<div class="quantity-input">
 									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" wire:model="qty" >
-									
+
 									<a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity"></a>
 									<a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity"></a>
 								</div>
@@ -144,7 +144,7 @@
 									</table>
 								</div>
 								<div class="tab-content-item " id="review">
-									
+
 									<div class="wrap-review-form">
 										<style>
 											.width-0-percent{
@@ -166,20 +166,20 @@
 												width: 100%;
 											}
 										</style>
-										
-										<div id="comments">											
+
+										<div id="comments">
 											<h2 class="woocommerce-Reviews-title">{{$product->orderItems->where('rstatus',1)->count()}} avis pour <span>{{$product->name}}</span></h2>
 											<ol class="commentlist">
 												@foreach($product->orderItems->where('rstatus',1) as $orderItem)
 													<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
-														<div id="comment-20" class="comment_container"> 
+														<div id="comment-20" class="comment_container">
 															<img alt="{{$orderItem->order->user->name}}" src="{{ asset('assets/images/profile')}}/{{$orderItem->order->user->profile->image}}" height="80" width="80">
 															<div class="comment-text">
 																<div class="star-rating">
 																	<span class="width-{{$orderItem->review->rating * 20}}-percent">Note <strong class="rating">{{$orderItem->review->rating}}</strong> out of 5</span>
 																</div>
-																<p class="meta"> 
-																	<strong class="woocommerce-review__author">{{$orderItem->order->user->name}}</strong> 
+																<p class="meta">
+																	<strong class="woocommerce-review__author">{{$orderItem->order->user->name}}</strong>
 																	<span class="woocommerce-review__dash">–</span>
 																	<time class="woocommerce-review__published-date" datetime="2008-02-14 20:00" >{{Carbon\Carbon::parse($orderItem->review->created_at)->format('d F Y g:i')}}</time>
 																</p>
@@ -203,7 +203,7 @@
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget widget-our-services ">
 						<div class="widget-content">
-							<ul class="our-services">
+							<ul class="">
 
 								<li class="service">
 									<a class="link-to-service" href="#">
@@ -248,10 +248,13 @@
 							@foreach ($popular_products as $p_products)
 								<li class="product-item">
 									<div class="product product-widget-style">
-										<div class="thumbnnail">
+										<div class="product-thumnail">
 											<a href="{{route('product.details',['slug'=>$p_products->slug])}}" title="{{$p_products->name}}">
 												<figure><img src="{{ asset('assets/images/products') }}/{{$p_products->image}}" alt="{{$p_products->name}}"></figure>
 											</a>
+											<div class="group-flash">
+												<span class="flash-item new-label">hot</span>
+											</div>
 										</div>
 										<div class="product-info">
 											<a href="{{route('product.details',['slug'=>$p_products->slug])}}" title="{{$p_products->name}}" class="product-name"><span>{{$p_products->name}}</span></a>
@@ -259,12 +262,12 @@
 										</div>
 									</div>
 								</li>
-							@endforeach		
+							@endforeach
 							</ul>
 						</div>
 					</div>
 				</div><!--end sitebar-->
-				
+
 				<div class="single-advance-box col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="wrap-show-advance-info-box style-1 box-in-site">
 						<h3 class="title-box">Produits Similaires</h3>
@@ -277,10 +280,10 @@
 											<figure><img src="{{ asset('assets/images/products') }}/{{$r_products->image}}" width="214" height="214" alt="{{$r_products->name}}"></figure>
 										</a>
 										<div class="group-flash">
-											<span class="flash-item new-label">Nouveaux</span>
+											<span class="flash-item bestseller-label">Bestseller</span>
 										</div>
 										<div class="wrap-btn">
-											<a href="#" class="function-link">voir</a>
+											<a href="{{route('product.details',['slug'=>$r_products->slug])}}" class="function-link">voir</a>
 										</div>
 									</div>
 									<div class="product-info">
@@ -288,7 +291,7 @@
 										<div class="wrap-price"><span class="product-price">{{$r_products->regular_price}} FCFA</span></div>
 									</div>
 								</div>
-								@endforeach								
+								@endforeach
 							</div>
 						</div><!--End wrap-products-->
 					</div>

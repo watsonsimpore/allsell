@@ -24,9 +24,9 @@ class CategoryComponent extends Component
         $this->category_slug = $category_slug;
         $this->scategory_slug = $scategory_slug;
     }
-    public function sotre($product_id,$product_name,$product_price)
+    public function store($product_id,$product_name,$product_price)
     {
-        Cart::add($product_id,$product_name,1,$product_price)->associate('App\Models\product');
+        Cart::instance('cart')->add($product_id,$product_name,1,$product_price)->associate('App\Models\Product');
         session()->flash('success_message','Produit ajouté avec success');
         return redirect()->route('product.cart');
     }

@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     </div>
-                    <div class="panel-body ">
+                    <div class="panel-body">
                         @if(Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                         @endif
@@ -52,7 +52,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">Nom de la Categorie</label>
+                                <label class="col-md-4 control-label">Icon de Category</label>
+                                <div class="col-md-4">
+                                <input type="file" class="input-file" wire:model="newicon"/>
+                                @if($newicon)
+                                        <img src="{{$newicon->temporaryUrl()}}" width="120"/>
+                                @else
+                                        <img src="{{asset('assets/images/icons')}}/{{$icon}}" width="120" />
+                                @endif
+                                @error('newicon') <p class ="text-danger">{{$message}}</p> @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Action</label>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Modifier</button>
                                 </div>

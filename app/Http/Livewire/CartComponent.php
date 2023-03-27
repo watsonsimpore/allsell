@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 use Cart;
 use Carbon\Carbon;
 use App\Models\Coupon;
+use App\Models\Product;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
@@ -167,6 +168,7 @@ class CartComponent extends Component
         {
             Cart::instance('cart')->store(Auth::user()->email);
         }
-        return view('livewire.cart-component')->layout("layouts.base");
+        $popuplar_products = Product::inRandomOrder()->limit(8)->get();
+        return view('livewire.cart-component',['popuplar_products'=>$popuplar_products])->layout("layouts.base");
     }
 }

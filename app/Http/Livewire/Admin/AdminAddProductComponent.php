@@ -33,7 +33,7 @@ class AdminAddProductComponent extends Component
         public $attr;
         public $inputs = [];
         public $attribute_arr = [];
-        public $attribute_values;
+        public $attribute_values=[];
 
         public function mount()
         {
@@ -72,7 +72,7 @@ class AdminAddProductComponent extends Component
                 'SKU' => 'required',
                 'stock_status' => 'required',
                 'quantity' => 'required|numeric',
-                'image' => 'required|mimes:jpeg,png',
+                'image' => 'required|mimes:jpeg,png,jpg',
                 'category_id' => 'required'
             ]);
         }
@@ -89,7 +89,7 @@ class AdminAddProductComponent extends Component
                 'SKU' => 'required',
                 'stock_status' => 'required',
                 'quantity' => 'required|numeric',
-                'image' => 'required|mimes:jpeg,png',
+                'image' => 'required|mimes:jpeg,png,jpg',
                 'category_id' => 'required'
             ]);
             $product = new Product();
@@ -127,9 +127,9 @@ class AdminAddProductComponent extends Component
             }
             $product->save();
 
-            foreach($this->attribute_values as $key=>$attribute_values)
+            foreach($this->attribute_values as $key=>$attribute_value)
             {
-                $avalues = explode(",",$attribute_values);
+                $avalues = explode(",",$attribute_value);
                 foreach($avalues as $avalue)
                 {
                     $attr_value = new AttributeValue();

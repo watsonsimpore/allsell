@@ -40,7 +40,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>Icon</th>
                                 <th>Categories</th>
                                 <th>Slug</th>
                                 <th>Sous Categorie</th>
@@ -49,8 +49,8 @@
                         </thead>
                         <tbody>
                             @foreach($categories as $category)
-                                <tr>
-                                    <td>{{$category->id}}</td>
+                                <tr>                                    
+                                    <td><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/></td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>

@@ -183,6 +183,7 @@ class CheckoutComponent extends Component
         {
             $this->makeTransaction($order->id,'pending');
             $this->resetCart();
+            
         }
         else if($this->paymentmode == 'card')
         {
@@ -249,7 +250,11 @@ class CheckoutComponent extends Component
                 $this->thankyou = 0;
             }
         }
-        $this->sendorderConfirmationMail($order);
+        if($this->thankyou)
+        {
+            return redirect()->route('thankyou');
+        }
+        $this->sendorderConfirmationMail($order->email);
 
         
     }

@@ -14,7 +14,7 @@
                             <div class="col-md-6">
                                 <a href="{{route('user.orders')}}" class="btn btn-success pull-right">Mes Commandes</a>
                                 @if($order->status == 'ordered')
-                                    <a href="#" wire:click.prevent="cancelOrder" style="margin-right:20px;" class="btn btn-warning pull-right">Annuler la commande</a>
+                                    <a href="#" onclick="confirm('Etes vous sur, de vouloir Annuler la Commande ?') || event.stopImmediatePropagation()" wire:click.prevent="cancelOrder" style="margin-right:20px;" class="btn btn-warning pull-right">Annuler la commande</a>
                                 @endif
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                             @if($order->status == 'delivered')
                                 <th>Date de livraison</th>
                                 <td>{{$order->delivered_date}}</td>
-                            @elseif($order->stasus == 'canceled')
+                            @elseif($order->status == 'canceled')
                                 <th>Date d'Annulation</th>
                                 <td>{{$order->canceled_date}}</td>
                             @endif

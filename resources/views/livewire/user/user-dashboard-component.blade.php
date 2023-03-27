@@ -66,7 +66,7 @@
                   </div>
                 </div>    
                 <div class="icon-stat-footer">
-                  <i class="fa fa-clock-o"></i> Updated Now
+                  <i class="fa fa-clock-o"></i> maintenant
                 </div>    
               </div>    
             </div>    
@@ -74,7 +74,7 @@
               <div class="icon-stat">    
                 <div class="row">
                   <div class="col-xs-8 text-left">
-                    <span class="icon-stat-label">Total D'envoi</span>
+                    <span class="icon-stat-label">Total en Commande</span>
                     <span class="icon-stat-value">{{$totalPurchase}}</span>
                   </div>    
                   <div class="col-xs-4 text-center">
@@ -82,7 +82,7 @@
                   </div>
                 </div>    
                 <div class="icon-stat-footer">
-                  <i class="fa fa-clock-o"></i> Updated Now
+                  <i class="fa fa-clock-o"></i> maintenant
                 </div>   
               </div>
             </div>
@@ -98,7 +98,7 @@
                   </div>
                 </div>    
                 <div class="icon-stat-footer">
-                  <i class="fa fa-clock-o"></i> Updated Now
+                  <i class="fa fa-clock-o"></i> maintenant
                 </div>
               </div>    
             </div>    
@@ -114,7 +114,7 @@
                   </div>
                 </div>    
                 <div class="icon-stat-footer">
-                  <i class="fa fa-clock-o"></i> Updated Now
+                  <i class="fa fa-clock-o"></i> maintenant
                 </div>    
               </div>    
             </div>    
@@ -163,7 +163,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
+                            </tbody>                            
                         </table>
                     </div>
                 </div>

@@ -45,7 +45,7 @@
 
 				<div class="container">
 
-					<div class="row"> 
+					<div class="row">
 
 						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 							<div class="wrap-footer-item">
@@ -64,7 +64,7 @@
 											<li>
 												<i class="fa fa-envelope" aria-hidden="true"></i>
 												<p class="contact-txt">{{$setting->email}}</p>
-											</li>											
+											</li>
 										</ul>
 									</div>
 								</div>
@@ -88,7 +88,7 @@
 								<div class="item-content">
 									<div class="wrap-newletter-footer">
 										<form action="#" class="frm-newletter" id="frm-newletter">
-											<input type="email" class="input-email" name="email" value="" placeholder="Enter your email address">
+											<input type="email" class="input-email" name="email" value="" placeholder="Entrer votre adresse E-mail">
 											<button class="btn-submit">S'abonner</button>
 										</form>
 									</div>
@@ -104,11 +104,11 @@
 									<div class="item-content">
 										<div class="wrap-vertical-nav">
 											<ul>
-												<li class="menu-item"><a href="#" class="link-term">Mon Compte</a></li>
+												<li class="menu-item"><a href="{{route('user.profile')}}" class="link-term">Mon Compte</a></li>
 												<li class="menu-item"><a href="#" class="link-term">Marque</a></li>
 												<li class="menu-item"><a href="#" class="link-term">Certificat de Cadeaux</a></li>
 												<li class="menu-item"><a href="#" class="link-term">Filiates</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Favoris</a></li>
+												<li class="menu-item"><a href="{{route('product.wishlist')}}" class="link-term">Favoris</a></li>
 											</ul>
 										</div>
 									</div>
@@ -118,11 +118,11 @@
 									<div class="item-content">
 										<div class="wrap-vertical-nav">
 											<ul>
-												<li class="menu-item"><a href="#" class="link-term">Nous contacter</a></li>
+												<li class="menu-item"><a href="{{route('contact')}}" class="link-term">Nous contacter</a></li>
 												<li class="menu-item"><a href="#" class="link-term">Retours</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Site Map</a></li>
+												<li class="menu-item"><a href="{{route('contact')}}" class="link-term">Localisation</a></li>
 												<li class="menu-item"><a href="#" class="link-term">Speciales</a></li>
-												<li class="menu-item"><a href="#" class="link-term">Histoire</a></li>
+												<li class="menu-item"><a href="/aboutus" class="link-term">Histoire</a></li>
 											</ul>
 										</div>
 									</div>
@@ -133,7 +133,7 @@
 					</div>
 
 					<div class="row">
-	
+
 		<div class="wrap-footer-content footer-style-1">
 			<!--End function info-->
 						<div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
@@ -159,8 +159,8 @@
 								<div class="item-content">
 									<div class="wrap-list-item apps-list">
 										<ul>
-											<li><a href="#" class="link-to-item" title="our application on apple store"><figure><img src="{{asset('assets/images/brands/apple-store.png')}}" alt="apple store" width="128" height="36"></figure></a></li>
-											<li><a href="#" class="link-to-item" title="our application on google play store"><figure><img src="{{asset('assets/images/brands/google-play-store.png')}}" alt="google play store" width="128" height="36"></figure></a></li>
+											<li><a href="#" class="link-to-item" title="notre application sur App Store"><figure><img src="{{asset('assets/images/brands/apple-store.png')}}" alt="apple store" width="128" height="36"></figure></a></li>
+											<li><a href="#" class="link-to-item" title="notre application sur Play Store"><figure><img src="{{asset('assets/images/brands/google-play-store.png')}}" alt="google play store" width="128" height="36"></figure></a></li>
 										</ul>
 									</div>
 								</div>
@@ -174,7 +174,7 @@
 					<div class="container">
 						<div class="back-link-box">
 							<h3 class="backlink-title"></h3>
-							<div class="back-link-row">					
+							<div class="back-link-row">
 							</div>
 						</div>
 					</div>
@@ -185,15 +185,15 @@
 			<div class="coppy-right-box">
 				<div class="container">
 					<div class="coppy-right-item item-left">
-						<p class="coppy-right-text">Copyright © 2022 ESSITECH SHOP. Tous Droits Reservés</p>
+						<p class="coppy-right-text">Copyright © 2023 ALLSELL SHOP. Tous Droits Reservés</p>
 					</div>
 					<div class="coppy-right-item item-right">
 						<div class="wrap-nav horizontal-nav">
 							<ul>
-								<li class="menu-item"><a href="about-us.html" class="link-term">A propos</a></li>								
-								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy Policy</a></li>
+								<li class="menu-item"><a href="about-us.html" class="link-term">A propos</a></li>
+								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Politique de confidentailité</a></li>
 								<li class="menu-item"><a href="terms-conditions.html" class="link-term">Termes & Conditions</a></li>
-								<li class="menu-item"><a href="return-policy.html" class="link-term">Retours Policy</a></li>								
+								<li class="menu-item"><a href="return-policy.html" class="link-term">Politique de Retours</a></li>
 							</ul>
 						</div>
 					</div>

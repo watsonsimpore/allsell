@@ -79,7 +79,7 @@
 				<ul class="product-list grid-products equal-container">
 					@php
 						$witems = Cart::instance('wishlist')->content()->pluck('id');
-					@endphp
+					@endphp					
 					@foreach($products as $product)					
 					<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
 						<div class="product product-style-3 equal-elem ">
@@ -126,7 +126,8 @@
 					<ul class="list-category">
 							@foreach ($categories as $category)
 							<li class="category-item {{count($category->subcategories) > 0 ? 'has-child-cate':''}}">
-								<a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
+								
+								<a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link"><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/> {{$category->name}}</a>
 								@if(count($category->subcategories)>0)
 									<span class="toggle-control">+</span>
 									<ul class="sub-cate">
@@ -167,21 +168,9 @@
 				<div class="widget-content">
 					<div id="slider" wire:ignore></div>
 				</div>
-			</div><!-- Price-->
+			</div><br/><br/><!-- Price-->
 
-			<div class="widget mercado-widget filter-widget color-filter">
-				<h2 class="widget-title">Couleurs</h2>
-				<div class="widget-content">
-					<ul class="list-style vertical-list has-count-index">
-						<li class="list-item"><a class="filter-link " href="#">Rouge <span>(217)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Jaune <span>(179)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Noir <span>(79)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Bleu <span>(283)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Gris <span>(116)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Rose <span>(29)</span></a></li>
-					</ul>
-				</div>
-			</div><!-- Color -->
+			
 
 			<div class="widget mercado-widget filter-widget">
 				<h2 class="widget-title">Taille</h2>
@@ -202,7 +191,7 @@
 				<h2 class="widget-title">Produits Populaires</h2>
 				<div class="widget-content">
 					<ul class="products">
-							@foreach ($popular_products as $p_products)
+							@foreach ($popular_products as $p_products)								
 								<li class="product-item">
 									<div class="product product-widget-style">
 										<div class="thumbnnail">

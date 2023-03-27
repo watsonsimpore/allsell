@@ -29,12 +29,15 @@ class ProductFactory extends Factory
             'slug' =>$slug,
             'short_description'=>$this->faker->text(),
             'description' => $this->faker->text(500),
-            'regular_price' =>$this->faker->numberBetween(10,500),
+            'regular_price' =>$this->faker->numberBetween(2500,25000),
+            'sale_price' =>$this->faker->numberBetween(250.0,2500.0),
             'SKU' => 'DIGI'.$this->faker->unique()->numberBetween(100,500),
-            'stock_status' => 'instock',
+            'stock_status' => 'En Stock',
             'quantity' => $this->faker->numberBetween(10,100),
-            'image' => 'digital_' . $this->faker->unique()->numberBetween(1,22).'.jpg',
-            'category_id' => $this->faker->numberBetween(1,5)
+            'image' => 'fashion_' . $this->faker->unique()->numberBetween(1,10).'.jpg',
+            'images' => 'fashion_' . $this->faker->numberBetween(1,10).'.jpg',
+            'category_id' => $this->faker->numberBetween(1,9),
+            'subcategory_id' => $this->faker->numberBetween(1,2)
         ];
     }
 }

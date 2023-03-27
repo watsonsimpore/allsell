@@ -74,6 +74,7 @@
 .main-info-area .right-section .wrap-icon-section.minicart .index{
 	background: #ff2832;
 }
+
 .has-child-cate .toggle-control:hover::after,
 .has-child-cate .toggle-control:hover::before,
 .widget.filter-widget .vertical-list li a.btn-control:hover::before,

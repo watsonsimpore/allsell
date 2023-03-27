@@ -2,19 +2,23 @@
 
 namespace App\Http\Livewire\Admin;
 
+use Carbon\Carbon;
+use Livewire\Component;
 use App\Models\Category;
 use App\Models\Subcategory;
-use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
 
 class AdminEditCategoryComponent extends Component
 {
+    use WithFileUploads;
     public $category_slug;
     public $category_id;
     public $name;
     public $slug;
     public $scategory_id;
-    public $scategory_slug;
+    public $icon;
+    public $newicon;
 
     public function mount($category_slug,$scategory_slug=null)
     {
@@ -34,6 +38,7 @@ class AdminEditCategoryComponent extends Component
             $this->category_id = $category->id;
             $this->name = $category->name;
             $this->slug = $category->slug;
+            $this->icon = $category->icon;
         }
         
     }
@@ -47,7 +52,8 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validateOnly($fields,[
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required|unique:categories',
+            'icon' => 'required|mimes:svg,png'
         ]);
     }
 
@@ -55,7 +61,8 @@ class AdminEditCategoryComponent extends Component
     {
         $this->validate([
             'name' => 'required',
-            'slug' => 'required|unique:categories'
+            'slug' => 'required|unique:categories',
+            'icon' => 'required|mimes:svg,png'
         ]);
         if($this->scategory_id)
         {
@@ -70,6 +77,14 @@ class AdminEditCategoryComponent extends Component
             $category = Category::find($this->category_id);
             $category->name = $this->name;
             $category->slug = $this->slug;
+
+            if($this->newicon)
+            {
+                unlink('assets/images/icons'.'/'.$category->icon);
+                $iconName = Carbon::now()->timestamp.'.'.$this->newicon->extension();
+                $this->newicon->storeAs('icons',$iconName);
+                $category->icon = $iconName; 
+            }
             $category->save();
         }
         session()->flash('message','La Categorie a été modifier avec success!');
