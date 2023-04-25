@@ -35,12 +35,12 @@
 									@error('firstname') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
 								<p class="row-in-form">
-									<label for="lname">Prénom<span>*</span></label>
+									<label for="lname">Prénom</label>
 									<input type="text" name="lname" value="" placeholder="Votre Prénom" wire:model="lastname">
 									@error('lastname') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
 								<p class="row-in-form">
-									<label for="email">Adresse Email:</label>
+									<label for="email">Adresse Email:<span>*</span></label>
 									<input type="email" name="email" value="" placeholder="Saisissez votre email" wire:model="email">
 									@error('email') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
@@ -50,12 +50,12 @@
 									@error('mobile') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
 								<p class="row-in-form">
-									<label for="add">Ligne 1</label>
+									<label for="add">Quartier<span>*</span></label>
 									<input type="text" name="add" value="" placeholder="Secteur" wire:model="line1">
 									@error('line1') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
 								<p class="row-in-form">
-									<label for="add">Ligne 2</label>
+									<label for="add">Secteur</label>
 									<input type="text" name="add" value="" placeholder="Secteur" wire:model="line2">
 								</p>
 								<p class="row-in-form">
@@ -64,7 +64,7 @@
 									@error('country') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
 								<p class="row-in-form">
-									<label for="city">Province<span>*</span></label>
+									<label for="city">Province</label>
 									<input type="text" name="province" value="" placeholder="Province" wire:model="province">
 									@error('province') <span class="text-danger">{{$message}}</span> @enderror
 								</p>
@@ -99,12 +99,12 @@
 										@error('s_firstname') <span class="text-danger">{{$message}}</span> @enderror
 									</p>
 									<p class="row-in-form">
-										<label for="lname">Prénom<span>*</span></label>
+										<label for="lname">Prénom</label>
 										<input type="text" name="lname" value="" placeholder="Votre Prénom" wire:model="s_lastname">
 										@error('s_lastname') <span class="text-danger">{{$message}}</span> @enderror
 									</p>
 									<p class="row-in-form">
-										<label for="email">Adresse Email:</label>
+										<label for="email">Adresse Email:<span>*</span></label>
 										<input type="email" name="email" value="" placeholder="Saisissez votre email" wire:model="s_email">
 										@error('s_email') <span class="text-danger">{{$message}}</span> @enderror
 									</p>
@@ -114,12 +114,12 @@
 										@error('s_mobile') <span class="text-danger">{{$message}}</span> @enderror
 									</p>
 									<p class="row-in-form">
-										<label for="add">Ligne 1</label>
+										<label for="add">Quartier<span>*</span></label>
 										<input type="text" name="add" value="" placeholder="Secteur 1" wire:model="s_line1">
 										@error('s_line1') <span class="text-danger">{{$message}}</span> @enderror
 									</p>
 									<p class="row-in-form">
-										<label for="add">Ligne 2</label>
+										<label for="add">Secteur</label>
 										<input type="text" name="add" value="" placeholder="Secteur 2" wire:model="s_line2">
 									</p>
 									<p class="row-in-form">
@@ -184,20 +184,20 @@
 							<div class="choose-payment-methods">
 								<label class="payment-method">
 									<input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="paymentmode">
-									<span>Payment à la Livraison</span>
+									<span>Paiement à la Livraison</span>
 									<span class="payment-desc">Commander maintenant et Payer à la livraison</span>
 								</label>
-								<label class="payment-method">
+								{{-- <label class="payment-method">
 									<input name="payment-method" id="payment-method-visa" value="card" type="radio" wire:model="paymentmode">
 									<span>Debit / Credit Card</span>
 									<span class="payment-desc">Payez via votre Carte de credit</span>
-								</label>
-								<label class="payment-method">
+								</label> --}}
+								{{-- <label class="payment-method">
 									<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio" wire:model="paymentmode">
 									<span>Paypal</span>
 									<span class="payment-desc">Vous pouvez payer avec votre carte de crédit</span>
 									<span class="payment-desc">carte si vous n'avez pas de Copte PayPal</span>
-								</label>
+								</label> --}}
 								@error('paymentmode') <span class="text-danger">{{$message}}</span> @enderror
 							</div>
 							@if(Session::has('checkout'))

@@ -25,7 +25,7 @@
 
 					<div class="sort-item orderby">
 						<select name="orderby" class="use-chosen" wire:model="sorting">
-							<option value="default" selected="selected">choix par defaut</option>							
+							<option value="default" selected="selected">choix par defaut</option>
 							<option value="date">Par nouveautés</option>
 							<option value="price">Par Moins chers au plus chers</option>
 							<option value="price-desc">Par plus chers au moins chers</option>
@@ -33,7 +33,7 @@
 					</div>
 
 					<div class="sort-item product-per-page">
-    
+
 						<select name="post-per-page" class="use-chosen" wire:model="pagesize">
 							<option value="18" selected="selected">18 par page</option>
 							<option value="24">24 par page</option>
@@ -64,7 +64,7 @@
 					padding-top:0;
 				}
 				.product-wish .fa{
-					color: #cbcbcb;	
+					color: #cbcbcb;
 					font-size:32px;
 				}
 				.product-wish .fa:hover{
@@ -79,8 +79,8 @@
 				<ul class="product-list grid-products equal-container">
 					@php
 						$witems = Cart::instance('wishlist')->content()->pluck('id');
-					@endphp					
-					@foreach($products as $product)					
+					@endphp
+					@foreach($products as $product)
 					<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
 						<div class="product product-style-3 equal-elem ">
 							<div class="product-thumnail">
@@ -126,7 +126,7 @@
 					<ul class="list-category">
 							@foreach ($categories as $category)
 							<li class="category-item {{count($category->subcategories) > 0 ? 'has-child-cate':''}}">
-								
+
 								<a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link"><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/> {{$category->name}}</a>
 								@if(count($category->subcategories)>0)
 									<span class="toggle-control">+</span>
@@ -139,26 +139,21 @@
 									</ul>
 								@endif
 							</li>
-							@endforeach						
+							@endforeach
 					</ul>
 				</div>
 			</div><!-- Categories widget-->
 
 			<div class="widget mercado-widget filter-widget brand-widget">
-				<h2 class="widget-title">Mode</h2>
+				<h2 class="widget-title">Sous Catégories</h2>
 				<div class="widget-content">
 					<ul class="list-style vertical-list list-limited" data-show="6">
-						<li class="list-item"><a class="filter-link active" href="#">Habits Modernes</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Batteries</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Printer</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Prosecsseurs</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Audio</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Smartphone & Tablettess</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Printer</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">CPUs</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Enceintes</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Telephones</a></li>
-						<li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+						{{-- <li class="list-item"><a class="filter-link active" href="#">Habits Modernes</a></li> --}}
+                        @foreach ($subcategories as $subcategory)
+                            <li class="list-item"><a class="filter-link" href="#">{{$subcategory->name}}</a></li>
+                        @endforeach
+
+						<li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Afficher plus<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div><!-- brand widget-->
@@ -170,10 +165,23 @@
 				</div>
 			</div><br/><br/><!-- Price-->
 
-			
+
+            <div class="widget mercado-widget filter-widget">
+				<h2 class="widget-title">Couleurs</h2>
+				<div class="widget-content">
+                    @foreach ($p_attributes as $p_attribute)
+					<ul class="list-style vertical-list has-count-index">
+                        <li class="list-item"><a class="filter-link" href="#">{{$p_attribute->name}}<span>(217)</span></a></li>
+					</ul>
+                    @endforeach
+
+				</div>
+			</div><!-- Color -->
+
+
 
 			<div class="widget mercado-widget filter-widget">
-				<h2 class="widget-title">Taille</h2>
+				<h2 class="widget-title">Couleur</h2>
 				<div class="widget-content">
 					<ul class="list-style inline-round ">
 						<li class="list-item"><a class="filter-link active" href="#">s</a></li>
@@ -191,7 +199,7 @@
 				<h2 class="widget-title">Produits Populaires</h2>
 				<div class="widget-content">
 					<ul class="products">
-							@foreach ($popular_products as $p_products)								
+							@foreach ($popular_products as $p_products)
 								<li class="product-item">
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
@@ -205,7 +213,7 @@
 										</div>
 									</div>
 								</li>
-							@endforeach							
+							@endforeach
 
 					</ul>
 				</div>

@@ -4,7 +4,7 @@
             height: 20px;
         }
         nav .hidden{
-            display: block !important; 
+            display: block !important;
         }
     </style>
     <div class="container" style="padding:30px 0">
@@ -22,7 +22,7 @@
                        <div class="col-md-4">
                            <input type="text" class="form-control" placeholder="Rechercher..." wire:model="searchTerm"/>
                        </div>
-                   </div> 
+                   </div>
                 </div>
                 <div class ="panel-body ">
                     @if(Session::has('message'))
@@ -33,8 +33,9 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Profil</th>
-                                <th>Nom & Prenom</th>                                
-                                <th>Email</th>                                                                                                
+                                <th>Nom & Prenom</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
                                 <th>Utype</th>
                                 <th>Action</th>
 
@@ -50,11 +51,16 @@
                                     @else
                                         <img src="{{asset('assets/images/profile/default.png')}}" width="40" />
                                     @endif
-                                    </td>                                    
+                                    </td>
                                     <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>                                    
+                                    <td>{{$user->email}}</td>
+                                    @if($user->profile)
+                                    <td>{{$user->profile->mobile}}</td>
+                                    @else
+                                    <td>Néant</td>
+                                    @endif
                                     <td>{{$user->utype}}</td>
-                                   
+
                                     <td>
                                         <a href="#"><i class="fa fa-edit fa-2x text-info"></i></a>
                                         <a href="#" onclick="confirm('Etes vous sur, de vouloir Supprimer ce Utilisateur?') || event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="deleteUser({{$user->id}})"><i class="fa fa-times fa-2x text-danger"></i></a>
@@ -62,9 +68,9 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table> 
+                    </table>
                        {{$users->links()}}
-                </div>  
+                </div>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@
 	<div class="wrap-breadcrumb">
 		<ul>
 			<li class="item-link"><a href="#" class="link">Acceuil</a></li>
-			<li class="item-link"><span>Digitales & Electroniques</span></li>
+			<li class="item-link"><span>Recherche</span></li>
 		</ul>
 	</div>
 	<div class="row">
@@ -21,13 +21,13 @@
 
 			<div class="wrap-shop-control">
 
-				<h1 class="shop-title">Digitales & Electroniques</h1>
+				<h1 class="shop-title"><span>résultat pour </span>{{$search}}</h1>
 
 				<div class="wrap-right">
 
 					<div class="sort-item orderby ">
 						<select name="orderby" class="use-chosen" wire:model="sorting">
-							<option value="default" selected="selected">choix par defaut</option>							
+							<option value="default" selected="selected">choix par defaut</option>
 							<option value="date">Par nouveautés</option>
 							<option value="price">Par Moins chers au plus chers</option>
 							<option value="price-desc">Par plus chers au moins chers</option>
@@ -35,7 +35,7 @@
 					</div>
 
 					<div class="sort-item product-per-page">
-    
+
 						<select name="post-per-page" class="use-chosen" wire:model="pagesize">
 							<option value="12" selected="selected">12 par page</option>
 							<option value="16">16 par page</option>
@@ -49,7 +49,7 @@
 
 					<div class="change-display-mode">
 						<a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grille</a>
-						<a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>Liste</a>
+						<a href="#" class="list-mode display-mode"><i class="fa fa-th-list"></i>Liste</a>
 					</div>
 
 				</div>
@@ -79,7 +79,7 @@
 
 			</div>
             @else
-                <p style="padding-top:30px;">Pas de Produits Correspondant</p>
+                <p style="padding-top:30px;"><h3>de Produits Correspondant</h3></p>
             @endif
 			<div class="wrap-pagination-info">
 				{{$products->links()}}
@@ -100,55 +100,42 @@
 					<ul class="list-category">
 							@foreach ($categories as $category)
                                 <li class="category-item">
-                                <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
+                                    <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link"><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/> {{$category->name}}</a>
                                 </li>
-							@endforeach						
+							@endforeach
 					</ul>
 				</div>
 			</div><!-- Categories widget-->
 
 			<div class="widget mercado-widget filter-widget brand-widget">
-				<h2 class="widget-title">Mode</h2>
+				<h2 class="widget-title">Sous Catégories</h2>
 				<div class="widget-content">
 					<ul class="list-style vertical-list list-limited" data-show="6">
-						<li class="list-item"><a class="filter-link active" href="#">Habits Modernes</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Batteries</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Printer</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Prosecsseurs</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Audio</a></li>
-						<li class="list-item"><a class="filter-link " href="#">Smartphone & Tablettess</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Printer</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">CPUs</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Enceintes</a></li>
-						<li class="list-item default-hiden"><a class="filter-link " href="#">Telephones</a></li>
-						<li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+                        @foreach ($subcategories as $subcategory)
+                            <li class="list-item"><a class="filter-link" href="#">{{$subcategory->name}}</a></li>
+                        @endforeach
+
+
+						<li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Afficher Plus<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
 			</div><!-- brand widget-->
 
 			<div class="widget mercado-widget filter-widget price-filter">
-				<h2 class="widget-title">Prix</h2>
+				<h2 class="widget-title">Prix <span class="text-info">{{$min_price}}FCFA - {{$max_price}}FCFA</span></h2>
 				<div class="widget-content">
-					<div id="slider-range"></div>
-					<p>
-						<label for="amount">Prix:</label>
-						<input type="text" id="amount" readonly>
-						<button class="filter-submit">Filtrer</button>
-					</p>
+					<div id="slider" wire:ignore></div>
 				</div>
-			</div><!-- Price-->
+			</div><br/><br/><!-- Price-->
 
 			<div class="widget mercado-widget filter-widget">
 				<h2 class="widget-title">Couleurs</h2>
 				<div class="widget-content">
+					@foreach ($p_attributes as $p_attribute)
 					<ul class="list-style vertical-list has-count-index">
-						<li class="list-item"><a class="filter-link " href="#">Rouge <span>(217)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Jaune <span>(179)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Noir <span>(79)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Bleu <span>(283)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Gris <span>(116)</span></a></li>
-						<li class="list-item"><a class="filter-link " href="#">Rose <span>(29)</span></a></li>
+                        <li class="list-item"><a class="filter-link" href="#">{{$p_attribute->name}}<span>(217)</span></a></li>
 					</ul>
+                    @endforeach
 				</div>
 			</div><!-- Color -->
 
@@ -239,3 +226,27 @@
 
 </main>
 <!--main area-->
+
+
+@push('scripts')
+	<script>
+		var slider = document.getElementById('slider');
+		noUiSlider.create(slider,{
+			start : [1,1000],
+			connect:true,
+			range :{
+				'min' : 1,
+				'max' : 100000
+			},
+			pips:{
+				mode:'steps',
+				stepped:true,
+				density:4
+			}
+		});
+		slider.noUiSlider.on('update',function(value){
+			@this.set('min_price', value[0]);
+			@this.set('max_price', value[1]);
+		});
+	</script>
+@endpush

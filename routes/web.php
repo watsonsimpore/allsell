@@ -64,14 +64,6 @@ use App\Http\Livewire\Admin\AdminEditHomeCategoryBannerComponent;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Home');
-// });
-
-// Route::get('/about-us', function() {
-//     return view('about');
-// });
-
 Route::get('/', HomeComponent::class);
 
 Route::get('/shop', ShopComponent::class);

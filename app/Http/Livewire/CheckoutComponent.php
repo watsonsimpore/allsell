@@ -11,6 +11,7 @@ use Livewire\Component;
 use App\Models\Shipping;
 use App\Models\OrderItem;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,7 +29,7 @@ class CheckoutComponent extends Component
     public $country;
     public $zipcode;
 
-    
+
     public $s_firstname;
     public $s_lastname;
     public $s_email;
@@ -49,18 +50,39 @@ class CheckoutComponent extends Component
     public $cvc;
 
 
+    public function mount()
+    {
+        if (Auth::check()) {
+            $user = User::find(Auth()->user()->id);
+            // dd($user);
+            // if ($user) {
+                $this->firstname = $user->name;
+                $this->lastname = $user->profile->lastname;
+                $this->email = $user->email;
+                $this->mobile = $user->profile->mobile;
+                $this->line1 = $user->profile->line1;
+                $this->line2 = $user->profile->line2;
+                $this->city = $user->profile->city;
+                $this->province = $user->profile->province;
+                $this->country = $user->profile->country;
+                $this->zipcode = $user->profile->zipcode;
+            // }
+        }
+    }
+
+
     public function updated($fields)
     {
         $this->validateOnly($fields,[
             'firstname' =>'required',
-            'lastname' =>'required',
+            'lastname' =>'',
             'email' =>'required|email',
             'mobile' =>'required|numeric',
             'line1' =>'required',
             'city' =>'required',
-            'province' =>'required',
+            'province' =>'',
             'country' =>'required',
-            'zipcode' =>'required',
+            'zipcode' =>'',
             'paymentmode' => 'required'
         ]);
 
@@ -68,15 +90,15 @@ class CheckoutComponent extends Component
         {
             $this->validateOnly($fields,[
                 's_firstname' =>'required',
-                's_lastname' =>'required',
+                's_lastname' =>'',
                 's_email' =>'required|email',
                 's_mobile' =>'required|numeric',
                 's_line1' =>'required',
                 's_city' =>'required',
-                's_province' =>'required',
+                's_province' =>'',
                 's_country' =>'required',
-                's_zipcode' =>'required'
-            ]); 
+                's_zipcode' =>''
+            ]);
         }
 
         if($this->paymentmode =='card')
@@ -89,20 +111,20 @@ class CheckoutComponent extends Component
 
             ]);
         }
-        
+
     }
     public function placeOrder()
     {
         $this->validate([
             'firstname' =>'required',
-            'lastname' =>'required',
+            'lastname' =>'',
             'email' =>'required|email',
             'mobile' =>'required|numeric',
             'line1' =>'required',
             'city' =>'required',
-            'province' =>'required',
+            'province' =>'',
             'country' =>'required',
-            'zipcode' =>'required',
+            'zipcode' =>'',
             'paymentmode' => 'required'
         ]);
 
@@ -163,7 +185,7 @@ class CheckoutComponent extends Component
                 's_province' =>'required',
                 's_country' =>'required',
                 's_zipcode' =>'required'
-            ]); 
+            ]);
             $shipping = new Shipping();
             $shipping->order_id = $order->id;
             $shipping->firstname = $this->s_firstname;
@@ -183,7 +205,7 @@ class CheckoutComponent extends Component
         {
             $this->makeTransaction($order->id,'pending');
             $this->resetCart();
-            
+
         }
         else if($this->paymentmode == 'card')
         {
@@ -256,7 +278,7 @@ class CheckoutComponent extends Component
         }
         $this->sendorderConfirmationMail($order->email);
 
-        
+
     }
 
     public function resetCart()
@@ -270,10 +292,10 @@ class CheckoutComponent extends Component
     {
         $transaction = new Transaction();
         $transaction->user_id = Auth::user()->id;
-        $transaction->order_id = $order_id;    
-        $transaction->mode = $this->paymentmode;    
-        $transaction->status = $status;    
-        $transaction->save();        
+        $transaction->order_id = $order_id;
+        $transaction->mode = $this->paymentmode;
+        $transaction->status = $status;
+        $transaction->save();
     }
 
     public function sendorderConfirmationMail($order)
@@ -296,7 +318,7 @@ class CheckoutComponent extends Component
             return redirect()->route('product.cart');
         }
     }
-    
+
     public function render()
     {
         $this->verifyForCheckout();

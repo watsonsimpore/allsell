@@ -2,20 +2,30 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CatBanner;
+use Cart;
 use App\Models\Sale;
+use App\Models\User;
 use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\CatBanner;
 use App\Models\HomeSlider;
+use App\Models\ShortSlider;
 use App\Models\HomeCategory;
 use App\Models\LastedBanner;
-use App\Models\ShortSlider;
-use Cart;
 use Illuminate\Support\Facades\Auth;
 
 class HomeComponent extends Component
 {
+
+    public $s;
+    public function s()
+    {
+
+    }
+
+
+
     public function render()
     {
         $sliders = HomeSlider::where('status',1)->get();
@@ -36,9 +46,9 @@ class HomeComponent extends Component
         }
         return view('livewire.home-component',[
                                                 'sliders'=>$sliders,
-                                                'lproducts'=>$lproducts, 
-                                                'categories'=>$categories, 
-                                                'no_of_products'=>$no_of_products, 
+                                                'lproducts'=>$lproducts,
+                                                'categories'=>$categories,
+                                                'no_of_products'=>$no_of_products,
                                                 'sproducts'=>$sproducts,
                                                 'sale'=>$sale,
                                                 's_sliders'=>$s_sliders ,

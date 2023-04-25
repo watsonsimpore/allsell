@@ -21,15 +21,15 @@ class CreateOrdersTable extends Migration
             $table->decimal('tax');
             $table->decimal('total');
             $table->string('firstname');
-            $table->string('lastname');
+            $table->string('lastname')->nullable();
             $table->string('mobile');
             $table->string('email');
             $table->string('line1');
             $table->string('line2')->nullable();
             $table->string('city');
-            $table->string('province');
+            $table->string('province')->nullable();
             $table->string('country');
-            $table->string('zipcode');
+            $table->string('zipcode')->nullable();
             $table->enum('status',['ordered','delivered','canceled'])->default('ordered');
             $table->boolean('is_shipping_different')->default(false);
             $table->timestamps();

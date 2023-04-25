@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class HomeCategory extends Model
 {
+
     use HasFactory;
 
     protected $table = "home_categories";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr-FR">
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chosen.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/popup.css') }}">
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/di st/css/select2.min.css" rel="stylesheet" />
 	<link href="path/to/select2.min.css" rel="stylesheet" />
 
@@ -57,7 +58,7 @@
 						<div class="topbar-menu right-menu">
 							<ul>
 
-								<li class="menu-item lang-menu menu-item-has-children parent">
+								{{-- <li class="menu-item lang-menu menu-item-has-children parent">
 									<a title="Francais" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-bf.png')}}" alt="lang-en"></span>Français<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
 										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{asset('assets/images/lang-hun.png')}}" alt="lang-hun"></span>Hungary</a></li>
@@ -76,9 +77,29 @@
 											<a title="Euro (EUR)" href="#">Euro (EUR)</a>
 										</li>
 									</ul>
-								</li>
+								</li> --}}
+
 								@if(Route::has('login'))
 									@auth
+
+                                            <div class="popup-container">
+                                                <div class="popup">
+                                                    <div class="icon">
+                                                        <i class="fa fa-check"></i>
+                                                    </div>
+                                                    <div class="popup-header">
+                                                        <h2>Inscription réussie</h2>
+                                                    </div>
+                                                    <div class="popup-body">
+                                                        <h3>Veuillez compléter votre profil pour tirer le meilleur parti de notre site web.</h3>
+                                                    </div>
+                                                    <div class="popup-footer">
+                                                        <button id="close-btn">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
 											@if(auth()->user()->utype === 'ADM')
 												<li class="menu-item menu-item-has-children parent" >
 													<a title="My Account" href="#">Mon Compte ({{Auth::user()->name}}) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -208,7 +229,7 @@
 						<div class="container">
 							<ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
 								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Hebdomadaire</a><span class="nav-label hot-label">hot</span></li>
-								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Article HOT</a><span class="nav-label hot-label">hot</span></li>
+								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Articles HOT</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Top nouveaux Articles</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Top Vente</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="{{route('hebdomadaire')}}" class="link-term">Les plus notés</a><span class="nav-label hot-label">hot</span></li>
@@ -258,6 +279,7 @@
 	<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
+	<script src="{{ asset('assets/js/popup.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="{{ asset('assets/js/select2.min.js')}}"></script>
 
