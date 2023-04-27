@@ -76,8 +76,9 @@ class SearchComponent extends Component
         $producty = Product::where('slug', $this->slug)->first();
         $subcategories = Subcategory::inRandomOrder()->limit(6)->get();
         $p_attributes = ProductAttribute::inRandomOrder()->limit(6)->get();
+        $popuplar_products = Product::inRandomOrder()->limit(6)->get();
 
         // $products = Product::paginate(12);
-        return view('livewire.search-component', ['products' => $products, 'categories' => $categories,'producty' => $producty, 'subcategories' => $subcategories, 'p_attributes' => $p_attributes])->layout("layouts.base");
+        return view('livewire.search-component', ['products' => $products, 'categories' => $categories,'producty' => $producty, 'subcategories' => $subcategories, 'p_attributes' => $p_attributes, 'popuplar_products' => $popuplar_products])->layout("layouts.base");
     }
 }
