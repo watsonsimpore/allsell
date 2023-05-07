@@ -38,7 +38,7 @@ class AdminEditProductComponent extends Component
     public $inputs=[];
     public $attribute_arr=[];
     public $attribute_values=[];
-    
+
     public function mount($product_slug)
     {
         $product = Product::where('slug',$product_slug)->first();
@@ -58,8 +58,8 @@ class AdminEditProductComponent extends Component
         $this->scategory_id = $product->subcategory_id;
         $this->newimage = $product->newimage;
         $this->product_id = $product->id;
-        $this->inputs = $product->attributeValue->where('product_id',$product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
-        $this->attribute_arr = $product->attributeValue->where('product_id',$product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
+        $this->inputs = $product->attributeValues->where('product_id',$product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
+        $this->attribute_arr = $product->attributeValues->where('product_id',$product->id)->unique('product_attribute_id')->pluck('product_attribute_id');
 
         foreach($this->attribute_arr as $a_rr)
         {
@@ -67,7 +67,7 @@ class AdminEditProductComponent extends Component
             $valueString = '';
             foreach($allAttributeValue as $value)
             {
-                $valueString = $valueString. $value .',';                
+                $valueString = $valueString. $value .',';
             }
             $this->attribute_values[$a_rr] = rtrim($valueString,",");
         }
@@ -103,7 +103,7 @@ class AdminEditProductComponent extends Component
                 'sale_price' => 'numeric',
                 'SKU' => 'required',
                 'stock_status' => 'required',
-                'quantity' => 'required|numeric',                
+                'quantity' => 'required|numeric',
                 'category_id' => 'required'
             ]);
             if($this->newimage)
@@ -125,7 +125,7 @@ class AdminEditProductComponent extends Component
             'sale_price' => 'numeric',
             'SKU' => 'required',
             'stock_status' => 'required',
-            'quantity' => 'required|numeric',            
+            'quantity' => 'required|numeric',
             'category_id' => 'required'
         ]);
 
@@ -136,7 +136,7 @@ class AdminEditProductComponent extends Component
             ]);
         }
 
-        $product = Product::find($this->product_id);        
+        $product = Product::find($this->product_id);
         $product->name = $this->name;
         $product->slug = $this->slug;
         $product->short_description = $this->short_description;
@@ -152,7 +152,7 @@ class AdminEditProductComponent extends Component
             unlink('assets/images/products'.'/'.$product->image);
             $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
             $this->newimage->storeAs('products',$imageName);
-            $product->image = $imageName; 
+            $product->image = $imageName;
         }
 
         if($this->newimages)

@@ -8,7 +8,7 @@
             <li class="item-link"><span>Panier</span></li>
         </ul>
     </div>
-    <div class=" main-content-area">        
+    <div class=" main-content-area">
         @if(Cart::instance('cart')->count() > 0)
             <div class="wrap-iten-in-cart">
                 @if(Session::has('success_message'))
@@ -20,6 +20,10 @@
                     <h3 class="box-title">Nom des Produits</h3>
                     <ul class="products-cart">
                         @foreach(Cart::instance('cart')->content() as $item)
+
+                        {{-- @php
+                            dd($item);
+                        @endphp --}}
                         <li class="pr-cart-item">
                             <div class="product-image">
                                 <figure><img src="{{ ('assets/images/products') }}/{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
@@ -37,7 +41,7 @@
                             <div class="price-field produtc-price"><p class="price">{{$item->model->regular_price}} FCFA</p></div>
                             <div class="quantity">
                                 <div class="quantity-input">
-                                    <input type="text" name="product-quatity" value="{{$item->qty}}" data-max="120" pattern="[0-9]*" >									
+                                    <input type="text" name="product-quatity" value="{{$item->qty}}" data-max="120" pattern="[0-120]*" >
                                     <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
                                     <a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
                                 </div>
@@ -51,12 +55,21 @@
                                 </a>
                             </div>
                         </li>
-                        @endforeach                										
+                        @endforeach
                     </ul>
                 @else
                     <p>Pas d'article dans le Panier</p>
                 @endif
             </div>
+            @php
+            // $shipping;
+            // if (Cart::instance('cart')->subtotal() > 20000)
+            // {
+            // $shipping = 1000;
+            // }else {
+            // $shipping = 0;
+            // }
+            // @endphp
 
             <div class="summary">
                 <div class="order-summary">
@@ -65,15 +78,16 @@
                     @if(Session::has('coupon'))
                         <p class="summary-info"><span class="title">Discount ({{Session::get('coupon')['code']}}) <a href="#" wire:click.prevent="removeCoupon"><i class="fa fa-times text-danger"></i></a></span><b class="index"> - {{number_format($discount,2)}} FCFA</b></p>
                         <p class="summary-info"><span class="title">Soustotal avec Discount</span><b class="index">{{number_format($subtotalAfterDiscount,2)}} FCFA</b></p>
-                        <p class="summary-info"><span class="title">Tax ({{config('cart.tax')}}%)</span><b class="index">{{number_format($taxAfterDiscount,2)}} FCFA</b></p>
+                        <p class="summary-info"><span class="title">Frais Transaction ({{config('cart.tax')}}%)</span><b class="index">{{number_format($taxAfterDiscount,2)}} FCFA</b></p>
+                        <p class="summary-info"><span class="title">Expédition</span><b class="index">{{$shipping}} FCFA</b></p>
                         <p class="summary-info total-info "><span class="title">Total</span><b class="index">{{number_format($totalAfterDiscount,2)}} FCFA</b></p>
                     @else
-                        <p class="summary-info"><span class="title">Taxe</span><b class="index">{{Cart::instance('cart')->tax()}} FCFA</b></p>
-                        <p class="summary-info"><span class="title">Expédition</span><b class="index">Expédition Gratuite</b></p>
-                        <p class="summary-info total-info "><span class="title">Total</span><b class="index">{{Cart::instance('cart')->total()}} FCFA</b></p>
-                    @endif               
+                        <p class="summary-info"><span class="title">Frais Transaction ({{config('cart.tax')}}%)</span><b class="index">{{number_format($taxAfterDiscount,2)}} FCFA</b></p>
+                        <p class="summary-info"><span class="title">Expédition</span><b class="index">{{$shipping}} FCFA</b></p>
+                        <p class="summary-info total-info "><span class="title">Total</span><b class="index">{{number_format($totalAfterDiscount)}} FCFA</b></p>
+                    @endif
                 </div>
-            
+
                     <div class="checkout-info">
                     @if(!Session::has('coupon'))
                         <label class="checkbox-field">
@@ -98,7 +112,7 @@
                         <a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Passer une Commande</a>
                         <a class="link-to-shop" href="/shop">Continuer vos achats<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
                     </div>
-                
+
                 <div class="update-clear">
                     <a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Vider le panier</a>
                     <a class="btn btn-update" href="/cart">modifier le panier</a>
@@ -131,7 +145,7 @@
                         <a class="link-to-product" href="{{route('product.details',['slug'=>$item->model->slug])}}">{{$item->model->name}}</a>
                     </div>
                     <div class="price-field produtc-price"><p class="price">{{$item->model->regular_price}} FCFA</p></div>
-                    <div class="quantity">                       
+                    <div class="quantity">
                         <p class="text-center"><a href="#" wire:click.prevent="moveToCart('{{$item->rowId}}')">Deplacer vers le Panier</a></p>
                     </div>
                     <div class="delete">
@@ -141,7 +155,7 @@
                         </a>
                     </div>
                 </li>
-                @endforeach                										
+                @endforeach
             </ul>
         @else
             <p>Pas d'article enregistré pour Plus Tard</p>

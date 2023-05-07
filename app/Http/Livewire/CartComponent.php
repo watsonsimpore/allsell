@@ -13,10 +13,12 @@ class CartComponent extends Component
     public $haveCouponCode;
     public $couponCode;
     public $discount;
+    public $shipping;
     public $subtotalAfterDiscount;
     public $taxAfterDiscount;
     public $totalAfterDiscount;
-    
+    public $GrandTotal;
+
     public function increaseQuantity($rowId)
     {
         $product = Cart::instance('cart')->get($rowId);
@@ -31,7 +33,7 @@ class CartComponent extends Component
         $qty = $product-> qty - 1;
         Cart::instance('cart')->update($rowId,$qty);
         $this->emitTo('cart-count-component','refreshComponent');
-    } 
+    }
 
     public function destroy($rowId)
     {
@@ -62,7 +64,7 @@ class CartComponent extends Component
         $this->emitTo('cart-count-component','refreshComponent');
         session()->flash('s_success_message', 'Article deplacé Vers le Panier!');
     }
-    
+
     public function deleteFromSaveForLater($rowId)
     {
         Cart::instance('saveForLater')->remove($rowId);
@@ -99,9 +101,10 @@ class CartComponent extends Component
                 $this->discount = (Cart::instance('cart')->subtotal()*session()->get('coupon')['value'])/100;
             }
             $this->subtotalAfterDiscount = Cart::instance('cart')->subtotal() - $this->discount;
-            $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax'))/100;
+            $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax')) / 100;
             $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
         }
+
     }
 
     public function removeCoupon()
@@ -128,9 +131,19 @@ class CartComponent extends Component
             session()->forget('checkout');
             return;
         }
-        
+
         if(session()->has('coupon'))
         {
+            if ($this->totalAfterDiscount > 0 && $this->totalAfterDiscount < 10000) {
+                $this->shipping = 500;
+            }else if ($this->totalAfterDiscount >  10000 && $this->totalAfterDiscount <= 20000) {
+                $this->shipping = 1000;
+            }else {
+                $this->shipping = 0;
+            }
+
+            $this->totalAfterDiscount = $this->totalAfterDiscount + $this->shipping;
+            
             session()->put('checkout',[
                 'discount' => $this->discount,
                 'subtotal' => $this->subtotalAfterDiscount,
@@ -140,15 +153,30 @@ class CartComponent extends Component
         }
         else
         {
+            $this->subtotalAfterDiscount = Cart::instance('cart')->subtotal();
+            $this->taxAfterDiscount = (Cart::instance('cart')->subtotal() * config('cart.tax')) / 100;
+            $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
+
+            if ($this->totalAfterDiscount > 0 && $this->totalAfterDiscount < 10000) {
+                $this->shipping = 500;
+            }else if ($this->totalAfterDiscount >  10000 && $this->totalAfterDiscount <= 20000) {
+                $this->shipping = 1000;
+            }else {
+                $this->shipping = 0;
+            }
+
+            $this->totalAfterDiscount = $this->totalAfterDiscount + $this->shipping;
+
+
             session()->put('checkout',[
                 'discount' => 0,
                 'subtotal' => Cart::instance('cart')->subtotal(),
-                'tax' => Cart::instance('cart')->tax(),
-                'total' => Cart::instance('cart')->total()
+                'tax' => $this->taxAfterDiscount,
+                'total' => $this->totalAfterDiscount
             ]);
         }
     }
-    
+
     public function render()
     {
         if(session()->has('coupon'))

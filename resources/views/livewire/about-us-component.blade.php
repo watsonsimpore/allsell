@@ -18,7 +18,7 @@
 </head>
 <body class="inner-page about-us ">
 
-	
+
 	<!--main area-->
 	<main id="main" class="main-site">
 
@@ -31,12 +31,12 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="container">
 			<!-- <div class="main-content-area"> -->
 				<div class="aboutus-info style-center">
 					<b class="box-title">Fais Interessant</b>
-					<p class="txt-content">Lorem Ipsum est simplement un faux texte de l'industrie de l'impression et de la composition. Lorem Ipsum est le texte factice depuis les années 1500, lorsqu'un imprimeur inconnu a pris une galère de type</p>
+					<p class="txt-content">Bienvenue sur AllSell ! Nous proposons une large gamme de produits de qualité, et nous nous engageons à offrir une expérience de magasinage en ligne conviviale, sûre et sécurisée. Votre satisfaction est notre priorité absolue !</p>
 				</div>
 
 				<div class="row equal-container">
@@ -44,7 +44,7 @@
 						<div class="aboutus-box-score equal-elem ">
 							<b class="box-score-title">10000</b>
 							<span class="sub-title">Aricles en Stocks</span>
-							<p class="desc">Lorem Ipsum est simplement un faux texte de l'industrie de l'impression et de la composition. Le Lorem Ipsum est le texte factice depuis les années 1500....
+							<p class="desc">Nos articles sont informatifs, éducatifs et divertissants. Ils couvrent une variété de sujets, tels que la technologie, la culture, la santé, la mode et bien plus encore.
 
 </p>
 						</div>
@@ -53,7 +53,7 @@
 						<div class="aboutus-box-score equal-elem ">
 							<b class="box-score-title">90%</b>
 							<span class="sub-title">Le retour de nos clients</span>
-							<p class="desc">Lorem Ipsum est simplement un faux texte de l'industrie de l'impression et de la composition. Le Lorem Ipsum est le texte factice depuis les années 1500....
+							<p class="desc">Les retours clients sont précieux pour améliorer l'expérience d'achat. Ils permettent de mieux comprendre les besoins des clients et d'identifier les points forts et les faiblesses de l'entreprise.
 
 </p>
 						</div>
@@ -62,7 +62,7 @@
 						<div class="aboutus-box-score equal-elem ">
 							<b class="box-score-title">2 millions</b>
 							<span class="sub-title">Utilisateurs du site</span>
-							<p class="desc">Lorem Ipsum est simplement un faux texte de l'industrie de l'impression et de la composition. Le Lorem Ipsum est le texte factice depuis les années 1500....
+							<p class="desc">Nos Visiteurs sont des clients potentiels de tous âges et de tous horizons, à la recherche de produits de qualité et d'une expérience d'achat en ligne pratique et satisfaisante.
 
 </p>
 						</div>
@@ -74,11 +74,11 @@
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 						<div class="aboutus-info style-small-left">
 							<b class="box-title">Qu'est-ce qu'on fait vraiment ?</b>
-							<p class="txt-content">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
+							<p class="txt-content">Nous proposons une large gamme de produits de qualité et offrons une expérience d'achat en ligne pratique, sécurisée et personnalisée pour répondre aux besoins de nos clients.</p>
 						</div>
 						<div class="aboutus-info style-small-left">
 							<b class="box-title">Histoire de la Compagnie</b>
-							<p class="txt-content">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,
+							<p class="txt-content">Notre entreprise a été fondée il y a plusieurs années avec pour objectif de proposer des produits de qualité et une expérience d'achat en ligne exceptionnelle pour répondre aux besoins de nos clients.
 
 </p>
 						</div>
@@ -87,13 +87,13 @@
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 						<div class="aboutus-info style-small-left">
 							<b class="box-title">Notre Vision</b>
-							<p class="txt-content">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,
+							<p class="txt-content">AllSell vise à offrir une expérience de magasinage en ligne conviviale, sûre et sécurisée, tout en proposant une large gamme de produits de haute qualité.
 
 </p>
 						</div>
 						<div class="aboutus-info style-small-left">
 							<b class="box-title">Coopérez avec nous !</b>
-							<p class="txt-content">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,
+							<p class="txt-content">Les gens devraient coopérer avec nous car nous offrons une expérience d'achat en ligne conviviale et sécurisée, avec une large gamme de produits de qualité répondant à leurs besoins.
 
 </p>
 						</div>
@@ -101,7 +101,7 @@
 
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 						<div class="aboutus-info style-small-left">
-							<b class="box-title">Coopérez avec nous !</b>
+							{{-- <b class="box-title">Coopérez avec nous !</b> --}}
 							<div class="list-showups">
 								<label>
 									<input type="radio" class="hidden" name="showup" id="shoup1" value="shoup1" checked="checked">
@@ -141,11 +141,11 @@
 				<div class="our-team-info">
 					<h4 class="title-box">Notre Equipe</h4>
 					<div class="our-staff">
-						<div 
-							class="slide-carousel owl-carousel style-nav-1 equal-container" 
-							data-items="5" 
-							data-loop="false" 
-							data-nav="true" 
+						<div
+							class="slide-carousel owl-carousel style-nav-1 equal-container"
+							data-items="5"
+							data-loop="false"
+							data-nav="true"
 							data-dots="false"
 							data-margin="30"
 							data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"4"}}' >
@@ -157,9 +157,9 @@
 									</a>
 								</div>
 								<div class="info">
-									<b class="name">WATSON</b>
+									<b class="name">WATSON SIMPORE</b>
 									<span class="title">Directeur</span>
-									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
+									<p class="desc">Responsable de la gestion et l'optimisation de la plate-forme de commerce électronique, l'analyse de données, l'identification des besoins des clients, l'optimisation de l'expérience utilisateur, la stratégie de marketing en ligne, la sécurité et la protection des données.</p>
 								</div>
 							</div>
 
@@ -172,58 +172,6 @@
 								<div class="info">
 									<b class="name">GANAMEY</b>
 									<span class="title">Cordonateur</span>
-									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
-								</div>
-							</div>
-
-							<div class="team-member equal-elem">
-								<div class="media">
-									<a href="#" title="NANA">
-										<figure><img src="assets/images/member-nana.jpg" alt="NANA"></figure>
-									</a>
-								</div>
-								<div class="info">
-									<b class="name">YVES</b>
-									<span class="title">Marketing</span>
-									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
-								</div>
-							</div>
-
-							<div class="team-member equal-elem">
-								<div class="media">
-									<a href="#" title="BRAUM">
-										<figure><img src="assets/images/member-braum.jpg" alt="BRAUM"></figure>
-									</a>
-								</div>
-								<div class="info">
-									<b class="name">NASSIROU</b>
-									<span class="title">Membre</span>
-									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
-								</div>
-							</div>
-
-							<div class="team-member equal-elem">
-								<div class="media">
-									<a href="#" title="LUCIA">
-										<figure><img src="assets/images/member-lucia.jpg" alt="LUCIA"></figure>
-									</a>
-								</div>
-								<div class="info">
-									<b class="name">GANAMEY</b>
-									<span class="title">Cordonateur</span>
-									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
-								</div>
-							</div>
-
-							<div class="team-member equal-elem">
-								<div class="media">
-									<a href="#" title="NANA">
-										<figure><img src="assets/images/member-nana.jpg" alt="NANA"></figure>
-									</a>
-								</div>
-								<div class="info">
-									<b class="name">YVES</b>
-									<span class="title">Marketing</span>
 									<p class="desc">Contrairement à la croyance populaire, le Lorem Ipsum n'est pas simplement un texte aléatoire. Il a ses racines dans un morceau de littérature latine classique de 45 avant JC, ce qui le rend vieux de plus de 2000 ans. Richard McClintock,</p>
 								</div>
 							</div>
@@ -234,11 +182,10 @@
 
 				</div>
 			<!-- </div> -->
-			
+
 
 		</div><!--end container-->
 
 	</main>
 	<!--main area-->
 
-	

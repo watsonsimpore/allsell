@@ -8,7 +8,7 @@
 							<i class="fa fa-truck" aria-hidden="true"></i>
 							<div class="wrap-left-info">
 								<h4 class="fc-name">Expédition gratuite</h4>
-								<p class="fc-desc">Gratuit sur commande</p>
+								<p class="fc-desc">Gratuite jusqu'à 20000 FCFA</p>
 							</div>
 
 						</li>
@@ -16,7 +16,7 @@
 							<i class="fa fa-recycle" aria-hidden="true"></i>
 							<div class="wrap-left-info">
 								<h4 class="fc-name">Guarantie</h4>
-								<p class="fc-desc">30 jours de remboursement</p>
+								<p class="fc-desc">Délais de remboursement de 14jours</p>
 							</div>
 
 						</li>
@@ -24,7 +24,7 @@
 							<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
 							<div class="wrap-left-info">
 								<h4 class="fc-name">Payment Sécurisé</h4>
-								<p class="fc-desc">Securisé votre Payment</p>
+								<p class="fc-desc">Payez en toute sécurité</p>
 							</div>
 
 						</li>
@@ -32,7 +32,7 @@
 							<i class="fa fa-life-ring" aria-hidden="true"></i>
 							<div class="wrap-left-info">
 								<h4 class="fc-name">Support en ligne</h4>
-								<p class="fc-desc">nous avons un support 24/7</p>
+								<p class="fc-desc">Nous avons un support 24h/7j</p>
 							</div>
 
 						</li>
@@ -190,7 +190,7 @@
 					<div class="coppy-right-item item-right">
 						<div class="wrap-nav horizontal-nav">
 							<ul>
-								<li class="menu-item"><a href="about-us.html" class="link-term">A propos</a></li>
+								<li class="menu-item"><a href="/aboutus" class="link-term">A propos</a></li>
 								<li class="menu-item"><a href="privacy-policy.html" class="link-term">Politique de confidentailité</a></li>
 								<li class="menu-item"><a href="terms-conditions.html" class="link-term">Termes & Conditions</a></li>
 								<li class="menu-item"><a href="return-policy.html" class="link-term">Politique de Retours</a></li>

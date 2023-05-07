@@ -13,7 +13,7 @@
             </div>
             <div class="panel-body">
                 @if(Session::has('message'))
-                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                 @endif
                 <form class="form-horizontal" enctype="multipart/form-data" wire:submit.prevent="addProduct">
                     <div class="form-group">
@@ -76,8 +76,8 @@
                         <label class="col-md-4 control-label">Stock</label>
                         <div class="col-md-4">
                             <select class="form-control" wire:model="stock_status">
-                                <option value="instock">En Stock</option>
-                                <option value="outofstock">hors stock</option>
+                                <option value="En Stock">En Stock</option>
+                                <option value="hors stock">hors stock</option>
                             </select>
                             @error('stock_status') <p class="text-danger">{{$message}}</p> @enderror
                         </div>
@@ -117,11 +117,11 @@
                         <div class="col-md-4">
                             <input type="file" class="input-file" wire:model="images" multiple />
                             @if($images)
-                            @foreach($images as $image)
-                            <img src="{{$image->temporaryUrl()}}" width="120" />
-                            @endforeach
+                                @foreach($images as $image)
+                                    <img src="{{$image->temporaryUrl()}}" width="120" />
+                                @endforeach
                             @endif
-                            @error('$images') <p class="text-danger">{{$message}}</p> @enderror
+                            @error('images') <p class="text-danger">{{$message}}</p> @enderror
                         </div>
                     </div>
 
@@ -131,7 +131,7 @@
                             <select class="form-control" wire:model="category_id" wire:change="changeSubcategory">
                                 <option value="">Selectionner la Categorie</option>
                                 @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                             @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
@@ -152,12 +152,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-4 control-label">Attributs de Ptoduits</label>
+                        <label class="col-md-4 control-label">Attributs de Produits</label>
                         <div class="col-md-3">
                             <select class="form-control" wire:model="attr">
-                                <option value="0">Selectionner l'Attibut</option>
+                                <option value="0">Selectionner l'Attribut</option>
                                 @foreach ($pattributes as $pattribute)
-                                <option value="{{$pattribute->id}}">{{$pattribute->name}}</option>
+                                    <option value="{{$pattribute->id}}">{{$pattribute->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -190,7 +190,7 @@
 </div>
 
 @push('scripts')
-<!-- <script>
+<script>
         $(function(){
             tinymce.init({
                 selector:'#short_description',
@@ -214,9 +214,9 @@
                 }
             });
         });
-    </script> -->
+    </script>
 
-<script>
+{{-- <script>
     ClassicEditor
         .create(document.querySelector('#description'))
         .then(editor => {
@@ -227,7 +227,7 @@
             //description
             console.error(error);
         });
-   
-</script>
+
+</script> --}}
 
 @endpush

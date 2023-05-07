@@ -51,13 +51,13 @@ class AdminAddCategoryComponent extends Component
             $category= new Category();
             $category->name = $this->name;
             $category->slug = $this->slug;
-            
+
             $iconName = $category->slug.'.'.$this->icon->extension();
             $this->icon->storeAs('icons',$iconName);
             $category->icon = $iconName;
-            
+            $category->icon = asset('assets/images/icons/'.$category->icon);
             $category->save();
-        }        
+        }
         session()->flash('message','La Categorie a été créer avec succes!');
     }
 

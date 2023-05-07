@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="p:domain_verify" content="d1698b83fd367ead8393c42d8ddbba4e"/>
 	<title>AllSell</title>
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico')}}">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color-01.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/popup.css') }}">
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/di st/css/select2.min.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<link href="path/to/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -81,25 +81,6 @@
 
 								@if(Route::has('login'))
 									@auth
-
-                                            <div class="popup-container">
-                                                <div class="popup">
-                                                    <div class="icon">
-                                                        <i class="fa fa-check"></i>
-                                                    </div>
-                                                    <div class="popup-header">
-                                                        <h2>Inscription réussie</h2>
-                                                    </div>
-                                                    <div class="popup-body">
-                                                        <h3>Veuillez compléter votre profil pour tirer le meilleur parti de notre site web.</h3>
-                                                    </div>
-                                                    <div class="popup-footer">
-                                                        <button id="close-btn">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
 											@if(auth()->user()->utype === 'ADM')
 												<li class="menu-item menu-item-has-children parent" >
 													<a title="My Account" href="#">Mon Compte ({{Auth::user()->name}}) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -178,15 +159,12 @@
 																</form>
 														</ul>
 												</li>
-												<li class="menu-item" ><a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i class="fa fa-envelope" aria-hidden="true"></i></i> <span class="badge bg-success badge-number">3</span> </a></li>
+												{{-- <li class="menu-item" ><a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown"> <i class="fa fa-envelope" aria-hidden="true"></i></i> <span class="badge bg-success badge-number">3</span> </a></li> --}}
 
 											@endif
 									@else
 											<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Se Connecter</a></li>
 											<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Créer un Compte</a></li>
-
-
-
 									@endif
 
 								@endif
@@ -279,7 +257,6 @@
 	<script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 	<script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
 	<script src="{{ asset('assets/js/functions.js') }}"></script>
-	<script src="{{ asset('assets/js/popup.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 	<script src="{{ asset('assets/js/select2.min.js')}}"></script>
 
@@ -292,6 +269,7 @@
 	<!-- <script src="https://cdn.tiny.cloud/1/3vxi554fg5ie68sfcq07o9dd46prqbjzqj7br66tsfw0jnx8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
 	<script src="https://cdn.tiny.cloud/1/xtp65i8sttdiby192ub38m3j0uoedye2ongm5vu2d52hrtqu/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 	<script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+    {{-- <script src="{{ asset('assets/js/popup.js') }}"></script> --}}
 
 
 	@livewireScripts

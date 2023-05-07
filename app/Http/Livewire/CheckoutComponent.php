@@ -204,6 +204,7 @@ class CheckoutComponent extends Component
         if($this->paymentmode == 'cod')
         {
             $this->makeTransaction($order->id,'pending');
+            $this->sendorderConfirmationMail($order);
             $this->resetCart();
 
         }
@@ -276,7 +277,7 @@ class CheckoutComponent extends Component
         {
             return redirect()->route('thankyou');
         }
-        $this->sendorderConfirmationMail($order->email);
+        $this->sendorderConfirmationMail($order);
 
 
     }

@@ -2,11 +2,11 @@
 return[
     //default tax
 
-'tax'=>21,
+'tax'=>1,
 // defaul number format
 
 'format' =>[
-    'decimals' => 2,
+    'decimals' => 0,
     'decimal_point' => '.',
     'thousand_seperator' =>''
 ],

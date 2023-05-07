@@ -65,9 +65,9 @@
                             class="product-name"><span>{{$sproduct->name}}</span></a>
                         <div class="wrap-price">
                             <in5>
-                                <p class="product-price">{{$sproduct->sale_price}} FCFA </p>
-                            </in5> <del>
-                                <p class="product-price"> {{$sproduct->regular_price}} FCFA</p>
+                                <p class="product-price">{{$sproduct->sale_price}} FCFA .</p>
+                            </in5>  <del>
+                                <p class="product-price">{{$sproduct->regular_price}} FCFA</p>
                             </del>
                         </div>
                     </div>

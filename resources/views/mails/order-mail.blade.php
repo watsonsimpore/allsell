@@ -19,9 +19,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($order->Items $item)
+            @foreach($order->orderItems as $item)
                 <tr>
-                    <td>{{<img src="{{asset('assets/images/products')}}/{{$item->product->image}}" width="100" /></td>
+                    <td><img src="{{asset('assets/images/products')}}/{{$item->product->image}}" width="100" /></td>
                     <td>{{$item->product->name}}</td>
                     <td>{{$item->quantity}}</td>
                     <td>{{$item->price * $item->quantity}} FCFA</td>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td colspan="3"></td>
-                <td style="font-size: 15px;font-weight:bold;">Livraison : Livraison Gratuite</td>
+                <td style="font-size: 15px;font-weight:bold;">Livraison : Gratuite</td>
             </tr>
             <tr>
                 <td colspan="3"></td>

@@ -71,24 +71,24 @@
 							@if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
                             	<div class="wrap-price">
 									<span class="product-price">{{$product->sale_price}}</span>
-									<del><span class="product-price regprice">{{$product->regular_price}} FCFA</pan></del>
+									<del><span class="product-price regprice">{{$product->regular_price}} FCFA</span></del>
 								</div>
 							@else
                             	<div class="wrap-price"><span class="product-price">{{$product->regular_price}} FCFA</span></div>
 							@endif
                             <div class="stock-info in-stock">
-                                <p class="availability">Disponibilité<b>{{$product->stock_status}}</b></p>
+                                <p class="availability">Disponibilité  <b>{{$product->stock_status}}</b></p>
                             </div>
 
 							<div>
-								@foreach($product->attributeValue->unique('product_attribute_id') as $av)
+								@foreach($product->attributeValues->unique('product_attribute_id') as $av)
 									<div class="row" style="margin-top: 20px;">
 										<div class="col-xs-2">
 											<p>{{$av->productAttribute->name}}</p>
 										</div>
 										<div class="col-xs-10">
 											<select class="form-control" style="width: 200px;" wire:model="satt.{{$av->productAttribute->name}}">
-												@foreach($av->productAttribute->attributeValue->where('product_id',$product->id) as $pav)
+												@foreach($av->productAttribute->attributeValues->where('product_id',$product->id) as $pav)
 													<option value="{{$pav->value}}">{{$pav->value}}</option>
 												@endforeach
 											</select>
@@ -98,7 +98,7 @@
 							</div>
 
                             <div class="quantity" style="margin-top: 10px;">
-                            	<span>Quantité: {{$product->quantity}}</span>
+                            	<span>Quantité: {{$product->quantity}} </span>
 								<div class="quantity-input">
 									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" wire:model="qty" >
 
@@ -107,13 +107,24 @@
 								</div>
 							</div>
 							<div class="wrap-butons">
-								@if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
-									<a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}', {{$product->sale_price}})">Ajouter au panier</a>
-								@else
-									<a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}', {{$product->regular_price}})">Ajouter au panier</a>
-								@endif
+                                <div class="col-md-6">
+                                    @if($product->sale_price > 0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+									    <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}', {{$product->sale_price}})"><i class="fa fa-cart-plus fa-2xl"></i>Panier</a>
+                                    @else
+                                        <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}', {{$product->regular_price}})"><i class="fa-sharp fa-light fa-cart-plus"></i>Panier</a>
+                                    @endif
+                                </div>
+
+                                @php
+                                    $source_url = route('product.details',['slug'=>$product->slug]);
+                                @endphp
+
+                                <div class="col-md-6">
+                                    <a href="https://api.whatsapp.com/send?phone=22664414288&source_url={{$source_url}}&text=Bonjour , je suis intéressé.e par ces produits" class="btn add-to-cart" >Discuter</a>
+                                </div>
+
                                 <div class="wrap-btn">
-                                    <a href="#" class="btn btn-compare">Comparer</a>
+                                    <a href="#" class="btn btn-compare">Discuter</a>
                                     <a href="#" class="btn btn-wishlist">Ajouter au Favoris</a>
                                 </div>
 							</div>

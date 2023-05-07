@@ -37,7 +37,7 @@ class AdminAddProductComponent extends Component
 
         public function mount()
         {
-            $this->stock_status = 'instock';
+            $this->stock_status = 'En Stock';
             $this->featured = 0;
         }
 
@@ -59,7 +59,7 @@ class AdminAddProductComponent extends Component
         {
             $this->slug = Str::slug($this->name,'-');
         }
-        
+
         public function updated($fields)
         {
             $this->validateOnly($fields,[
@@ -126,33 +126,35 @@ class AdminAddProductComponent extends Component
                 $product->subcategory_id = $this->scategory_id;
             }
             $product->save();
+            //dd($product);
 
-            foreach($this->attribute_values as $key=>$attribute_value)
-            {
-                $avalues = explode(",",$attribute_value);
-                foreach($avalues as $avalue)
-                {
-                    $attr_value = new AttributeValue();
-                    $attr_value->product_attribute_id = $key;
-                    $attr_value->value = $avalue;
-                    $attr_value->product_id = $product->id;
-                    $attr_value->save();
-                }
-            }
+            // foreach($this->attribute_values as $key=>$attribute_value)
+            // {
+            //     $avalues = explode(",",$attribute_value);
+            //     foreach($avalues as $avalue)
+            //     {
+            //         $attr_value = new AttributeValue();
+            //         $attr_value->product_attribute_id = $key;
+            //         $attr_value->value = $avalue;
+            //         $attr_value->product_id = $product->id;
+            //         $attr_value->save();
+            //     }
+            // }
 
             session()->flash('message','Produit ajouté avec Succès!');
-            
+
         }
         public function changeSubcategory()
         {
             $this->scategory_id = 0;
         }
+
     public function render()
     {
         $scategories = Subcategory::where('category_id',$this->category_id)->get();
         $categories = Category::all();
-
         $pattributes = ProductAttribute::all();
+
         return view('livewire.admin.admin-add-product-component',['categories'=>$categories,'scategories'=>$scategories,'pattributes'=>$pattributes])->layout('layouts.base');
     }
 }

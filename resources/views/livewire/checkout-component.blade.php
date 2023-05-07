@@ -182,16 +182,23 @@
 							</div>
 							@endif
 							<div class="choose-payment-methods">
-								<label class="payment-method">
+                                @if (Session::get('checkout')['total'] < 20000)
+                                    <label class="payment-method">
+                                        <input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="paymentmode">
+                                        <span>Paiement à la Livraison</span>
+                                        <span class="payment-desc">Commander maintenant et Payer à la livraison</span>
+                                    </label>
+                                @endif
+								{{-- <label class="payment-method">
 									<input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="paymentmode">
 									<span>Paiement à la Livraison</span>
 									<span class="payment-desc">Commander maintenant et Payer à la livraison</span>
-								</label>
-								{{-- <label class="payment-method">
+								</label> --}}
+								<label class="payment-method">
 									<input name="payment-method" id="payment-method-visa" value="card" type="radio" wire:model="paymentmode">
 									<span>Debit / Credit Card</span>
 									<span class="payment-desc">Payez via votre Carte de credit</span>
-								</label> --}}
+								</label>
 								{{-- <label class="payment-method">
 									<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio" wire:model="paymentmode">
 									<span>Paypal</span>
@@ -200,6 +207,15 @@
 								</label> --}}
 								@error('paymentmode') <span class="text-danger">{{$message}}</span> @enderror
 							</div>
+                            {{-- @php
+                            $shipping;
+                            if (Cart::instance('cart')->subtotal() > 20000)
+                            {
+                            $shipping = 1000;
+                            }else {
+                            $shipping = 0;
+                            }
+                            @endphp --}}
 							@if(Session::has('checkout'))
 							<p class="summary-info grand-total"><span>Total</span> <span class="grand-total-price">{{Session::get('checkout')['total']}} FCFA</span></p>
 							@endif

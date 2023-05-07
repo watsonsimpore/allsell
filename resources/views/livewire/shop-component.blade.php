@@ -47,7 +47,7 @@
 
 					<div class="change-display-mode">
 						<a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grille</a>
-						<a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>Liste</a>
+						<a href="#" class="list-mode display-mode"><i class="fa fa-th-list"></i>Liste</a>
 					</div>
 
 				</div>
@@ -127,7 +127,7 @@
 							@foreach ($categories as $category)
 							<li class="category-item {{count($category->subcategories) > 0 ? 'has-child-cate':''}}">
 
-								<a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link"><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/> {{$category->name}}</a>
+								<a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link"><img src="{{$category->icon}}" width="30"/> {{$category->name}}</a>
 								@if(count($category->subcategories)>0)
 									<span class="toggle-control">+</span>
 									<ul class="sub-cate">
@@ -159,7 +159,7 @@
 			</div><!-- brand widget-->
 
 			<div class="widget mercado-widget filter-widget price-filter">
-				<h2 class="widget-title">Prix <span class="text-info">{{$min_price}}FCFA - {{$max_price}}FCFA</span></h2>
+				<h2 class="widget-title">Prix <span class="text-info">{{$min_price}} FCFA - {{$max_price}} FCFA</span></h2>
 				<div class="widget-content">
 					<div id="slider" wire:ignore></div>
 				</div>
