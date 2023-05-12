@@ -21,9 +21,9 @@ jobs:
   build-project:
     name: build allsell
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+#     permissions:
+#       contents: read
+#       packages: write
       # if you add permissions here this needs to be done in the laravel-starter-with-workflow-orchestration.yaml as well
     steps:
       - name: checkout
