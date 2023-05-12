@@ -26,7 +26,7 @@
                         @endphp --}}
                         <li class="pr-cart-item">
                             <div class="product-image">
-                                <figure><img src="{{ ('assets/images/products') }}/{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
+                                <figure><img src="{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
                             </div>
                             <div class="product-name">
                                 <a class="link-to-product" href="{{route('product.details',['slug'=>$item->model->slug])}}">{{$item->model->name}}</a>
@@ -158,7 +158,7 @@
                 @endforeach
             </ul>
         @else
-            <p>Pas d'article enregistré pour Plus Tard</p>
+            <p>Pas darticle enregistré pour Plus Tard</p>
         @endif
         </div>
 
@@ -170,7 +170,7 @@
                         <div class="product product-style-2 equal-elem">
                             <div class="product-thumnail">
                                 <a href="{{route('product.details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}">
-                                    <figure><img src="{{ asset('assets/images/products') }}/{{$p_product->image}}" width="214" height="214" alt="{{$p_product->name}}"></figure>
+                                    <figure><img src="{{$p_product->image}}" alt="{{$p_product->name}}"></figure>
                                 </a>
                                 <div class="group-flash">
                                     <span class="flash-item bestseller-label">nouveau</span>

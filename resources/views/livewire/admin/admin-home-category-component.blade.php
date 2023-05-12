@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label">N° Produit:</label>
+                                <label class="col-md-4 control-label">Nombre de Produit Produit:</label>
                                 <div class="col-md-4">
                                    <input type="text" class="form-control input-md" wire:model="numberofproducts" />
                                 </div>
@@ -44,13 +44,15 @@
 </div>
 
 @push('scripts')
+
     <script>
         $(document).ready(function(){
-          $('.sel_categories').select2();
-          $('.sel_categories').on('change',function(e){
-              var data = $('.sel_categories').select2("val");
-              @this.set('selected_categories',data);
-          });  
-        });  
+            $('.sel_categories').select2();
+            $('.sel_categories').on('change',function(e){
+                var data = $('.sel_categories').select2("val");
+                @this.set('selected_categories',data);
+            });
+            });
     </script>
+
 @endpush

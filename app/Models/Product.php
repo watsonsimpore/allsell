@@ -29,4 +29,9 @@ class Product extends Model
     {
         return $this->hasMany(AttributeValue::class,'product_id');
     }
+
+    public function scopePopular($query, $limit = 10)
+    {
+        return $query->orderBy('views', 'desc')->limit($limit);
+    }
 }

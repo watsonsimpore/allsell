@@ -107,17 +107,29 @@ class AdminAddProductComponent extends Component
             $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
             $this->image->storeAs('products',$imageName);
             $product->image = $imageName;
+            $product->image = asset('assets/images/products/'.$product->image);
 
-            if($this->images)
-            {
-                $imagesname = '';
-                foreach($this->images as $key=>$image)
-                {
-                    $imgName = Carbon::now()->timestamp. $key. '.' .$image->extension();
-                    $image->storeAs('products',$imgName);
-                    $imagesname = $imagesname.','.$imgName;
+            // if($this->images)
+            // {
+            //     $imagesname = '';
+            //     foreach($this->images as $key=>$image)
+            //     {
+            //         $imgName = Carbon::now()->timestamp. $key. '.' .$image->extension();
+            //         $image->storeAs('products',$imgName);
+            //         $imagesname = $imagesname.','.$imgName;
+            //     }
+            //     $product->images =$imagesname;
+            // }
+
+            if ($this->images) {
+                $imagesname = [];
+                foreach ($this->images as $key => $image) {
+                    $imgName = Carbon::now()->timestamp . $key . '.' . $image->extension();
+                    $image->storeAs('products', $imgName);
+                    $image_url = asset('assets/images/products/'.$imgName);
+                    $imagesname[] = $image_url;
                 }
-                $product->images =$imagesname;
+                $product->images = implode(',', $imagesname);
             }
 
             $product->category_id = $this->category_id;
@@ -126,7 +138,6 @@ class AdminAddProductComponent extends Component
                 $product->subcategory_id = $this->scategory_id;
             }
             $product->save();
-            //dd($product);
 
             // foreach($this->attribute_values as $key=>$attribute_value)
             // {

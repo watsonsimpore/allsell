@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
@@ -38,7 +39,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category();
         if($request->category_id)
         {
             $category = new Subcategory();
@@ -73,7 +73,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return new CategoryResource($category);
     }
 
     /**
@@ -94,9 +95,37 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $category_id,$scategory_id=null)
     {
-        //
+
+        if($request->scategory_id)
+        {
+            $category = Subcategory::findOrFail($scategory_id);
+            $category->name = $request->name;
+            $category->slug = $request->slug;
+            $category->category_id = $request->category_id;
+            if ($category->save()) {
+                return new CategoryResource($category);
+            }
+        }
+        else
+        {
+            $category = Category::findOrFail($category_id);
+            $category->name = $request->name;
+            $category->slug = $request->slug;
+
+            if($request->newicon)
+            {
+                unlink('assets/images/icons'.'/'.$category->icon);
+                $iconName = $category->slug.'.'.$request->newicon->extension();
+                $request->newicon->storeAs('icons',$iconName);
+                $category->icon = $iconName;
+                $category->icon = asset('assets/images/icons/'.$category->icon);
+            }
+            if ($category->save()) {
+                return new CategoryResource($category);
+            }
+        }
     }
 
     /**
@@ -105,8 +134,28 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyCategory($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        if ($category->delete()) {
+            return new CategoryResource($category);
+        }
+    }
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * essayer de Supprimer Category et Subcategory sur le meme API
+     */
+    public function destroySubCategory($id)
+    {
+        $category = Subcategory::findOrFail($id);
+        if ($category->delete()) {
+            return new CategoryResource($category);
+        }
     }
 }

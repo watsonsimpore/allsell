@@ -56,6 +56,8 @@ class CartComponent extends Component
         $this->emitTo('cart-count-component','refreshComponent');
         session()->flash('success_message', 'Article enregister pour plus Tard!');
     }
+
+    
     public function moveToCart($rowId)
     {
         $item = Cart::instance('saveForLater')->get($rowId);
@@ -143,7 +145,7 @@ class CartComponent extends Component
             }
 
             $this->totalAfterDiscount = $this->totalAfterDiscount + $this->shipping;
-            
+
             session()->put('checkout',[
                 'discount' => $this->discount,
                 'subtotal' => $this->subtotalAfterDiscount,

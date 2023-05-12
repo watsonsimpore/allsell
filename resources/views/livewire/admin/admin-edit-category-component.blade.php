@@ -1,5 +1,5 @@
 <div>
-    
+
     <div class="container" style="padding:30px 0;">
         <div class="row">
             <div class="col-md-12">
@@ -58,7 +58,7 @@
                                 @if($newicon)
                                         <img src="{{$newicon->temporaryUrl()}}" width="120"/>
                                 @else
-                                        <img src="{{asset('assets/images/icons')}}/{{$icon}}" width="120" />
+                                        <img src="{{$icon}}" width="120" />
                                 @endif
                                 @error('newicon') <p class ="text-danger">{{$message}}</p> @enderror
                                 </div>
@@ -71,8 +71,8 @@
                                 </div>
                             </div>
 
-                        </form>  
-                    </div>  
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

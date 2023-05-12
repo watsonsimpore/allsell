@@ -30,7 +30,7 @@ class CategoryComponent extends Component
         session()->flash('success_message','Produit ajouté avec success');
         return redirect()->route('product.cart');
     }
-    
+
     public function render()
     {
         $category_id = null;
@@ -52,10 +52,10 @@ class CategoryComponent extends Component
             $filter = "";
         }
 
-        
+
         if($this-> sorting=='date')
         {
-            $products= Product::where($filter.'category_id',$category_id)->orderBy('created_at','DESK')->paginate($this->pagesize);
+            $products= Product::where($filter.'category_id',$category_id)->orderBy('created_at','DESC')->paginate($this->pagesize);
 
         }
         else if($this-> sorting=="price")
@@ -73,9 +73,9 @@ class CategoryComponent extends Component
             $products= Product::where($filter.'category_id',$category_id)->paginate($this->pagesize);
 
         }
-        
+
         $categories= Category::all();
-        
+
         $products = Product::paginate(12);
         return view('livewire.category-component',['products'=> $products,'categories'=>$categories,'category_name'=>$category_name ])->layout("layouts.base");
     }

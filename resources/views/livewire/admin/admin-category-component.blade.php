@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel-body">
                     @if(Session::has('message'))
                         <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
@@ -44,13 +44,13 @@
                                 <th>Categories</th>
                                 <th>Slug</th>
                                 <th>Sous Categorie</th>
-                                <th>Action</th> 
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($categories as $category)
-                                <tr>                                    
-                                    <td><img src="{{asset('assets/images/icons')}}/{{$category->icon}}" width="30"/></td>
+                                <tr>
+                                    <td><img src="{{$category->icon}}" width="30"/></td>
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->slug}}</td>
                                     <td>
@@ -71,7 +71,7 @@
                         </tbody>
                     </table>
                     {{$categories->links()}}
-                </div> 
+                </div>
             </div>
         </div>
     </div>

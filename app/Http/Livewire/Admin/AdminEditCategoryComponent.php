@@ -13,6 +13,7 @@ class AdminEditCategoryComponent extends Component
 {
     use WithFileUploads;
     public $category_slug;
+    public $scategory_slug;
     public $category_id;
     public $name;
     public $slug;
@@ -40,7 +41,7 @@ class AdminEditCategoryComponent extends Component
             $this->slug = $category->slug;
             $this->icon = $category->icon;
         }
-        
+
     }
 
     public function generateslug()
@@ -59,18 +60,20 @@ class AdminEditCategoryComponent extends Component
 
     public function updateCategory()
     {
-        $this->validate([
-            'name' => 'required',
-            'slug' => 'required|unique:categories',
-            'icon' => 'required|mimes:svg,png'
-        ]);
+
+        // $this->validate([
+        //     'name' => 'required',
+        //     'slug' => 'required|unique:categories',
+        //     'icon' => 'required|mimes:svg,png'
+        // ]);
+        
         if($this->scategory_id)
         {
             $scategory = Subcategory::find($this->scategory_id);
             $scategory->name = $this->name;
             $scategory->slug = $this->slug;
             $scategory->category_id = $this->category_id;
-            $scategory->save();            
+            $scategory->save();
         }
         else
         {
@@ -83,16 +86,16 @@ class AdminEditCategoryComponent extends Component
                 unlink('assets/images/icons'.'/'.$category->icon);
                 $iconName = Carbon::now()->timestamp.'.'.$this->newicon->extension();
                 $this->newicon->storeAs('icons',$iconName);
-                $category->icon = $iconName; 
+                $category->icon = $iconName;
             }
             $category->save();
         }
         session()->flash('message','La Categorie a été modifier avec success!');
 
-        
+
     }
 
-    
+
     public function render()
     {
         $categories = Category::all();

@@ -14,7 +14,7 @@ class ContactComponent extends Component
     public $phone;
     public $comment;
 
-    public function update($fiedls)
+    public function updated($fiedls)
     {
         $this->validateOnly($fiedls,[
             'name' =>'required',
@@ -41,7 +41,7 @@ class ContactComponent extends Component
         $contact->save();
         session()->flash('message','Merci, votre message a été envoyé !');
     }
-    
+
     public function render()
     {
         $setting = Setting::find(1);

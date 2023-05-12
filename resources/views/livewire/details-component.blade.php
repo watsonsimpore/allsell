@@ -24,16 +24,16 @@
 						<div class="detail-media">
 							<div class="product-gallery" wire:ignore>
 							  <ul class="slides">
-									<li data-thumb="{{ asset('assets/images/products' ) }}/{{$product->image}}">
-										<img src="{{ asset('assets/images/products') }}/{{$product->image}}" alt="{{$product->name}}" />
+									<li data-thumb="{{$product->image}}">
+										<img src="{{$product->image}}" alt="{{$product->name}}" />
 									</li>
 									@php
 										$images = explode(",",$product->images);
 									@endphp
 									@foreach($images as $image)
 										@if($image)
-											<li data-thumb="{{ asset('assets/images/products' ) }}/{{$image}}">
-												<img src="{{ asset('assets/images/products') }}/{{$image}}" alt="{{$product->name}}" />
+											<li data-thumb="{{$image}}">
+												<img src="{{$image}}" alt="{{$product->name}}" />
 											</li>
 										@endif
 									@endforeach
@@ -261,7 +261,7 @@
 									<div class="product product-widget-style">
 										<div class="product-thumnail">
 											<a href="{{route('product.details',['slug'=>$p_products->slug])}}" title="{{$p_products->name}}">
-												<figure><img src="{{ asset('assets/images/products') }}/{{$p_products->image}}" alt="{{$p_products->name}}"></figure>
+												<figure><img src="{{$p_products->image}}" alt="{{$p_products->name}}"></figure>
 											</a>
 											<div class="group-flash">
 												<span class="flash-item new-label">hot</span>
@@ -288,7 +288,7 @@
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
 										<a href="{{route('product.details',['slug'=>$r_products->slug])}}" title="{{$r_products->name}}" title="{{$r_products->name}}">
-											<figure><img src="{{ asset('assets/images/products') }}/{{$r_products->image}}" width="214" height="214" alt="{{$r_products->name}}"></figure>
+											<figure><img src="{{$r_products->image}}" width="214" height="214" alt="{{$r_products->name}}"></figure>
 										</a>
 										<div class="group-flash">
 											<span class="flash-item bestseller-label">Bestseller</span>

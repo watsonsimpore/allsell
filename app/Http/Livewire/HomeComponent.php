@@ -18,13 +18,6 @@ use Illuminate\Support\Facades\Auth;
 class HomeComponent extends Component
 {
 
-    public $s;
-    public function s()
-    {
-
-    }
-
-
 
     public function render()
     {

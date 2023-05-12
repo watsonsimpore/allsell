@@ -45,7 +45,7 @@
                 <div class="product product-style-2 equal-elem ">
                     <div class="product-thumnail">
                         <a href="{{route('product.details',['slug'=>$sproduct->slug])}}" title="{{$sproduct->name}}">
-                            <figure><img src="{{ asset('assets/images/products') }}/{{$sproduct->image}}" width="800"
+                            <figure><img src="{{$sproduct->image}}" width="800"
                                     height="800" alt="{{$sproduct->name}}"></figure>
                         </a>
                         <div class="group-flash">
@@ -102,7 +102,7 @@
                                         <a href="{{route('product.details',['slug'=>$lproduct->slug])}}"
                                             title="{{$lproduct->name}}">
                                             <figure><img
-                                                    src="{{ asset('assets/images/products') }}/{{$lproduct->image}}"
+                                                    src="{{$lproduct->image}}"
                                                     width="800" height="800" alt="{{$lproduct->name}}"></figure>
                                         </a>
                                         <div class="group-flash">
@@ -151,8 +151,7 @@
                                 data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
 
                                 @php
-                                $c_products =
-                                DB::table('products')->where('category_id',$category->id)->get()->take($no_of_products);
+                                    $c_products = DB::table('products')->where('category_id',$category->id)->get()->take($no_of_products);
                                 @endphp
                                 @foreach ($c_products as $c_product)
                                 <div class="product product-style-2 equal-elem ">
@@ -160,7 +159,7 @@
                                         <a href="{{route('product.details',['slug'=>$c_product->slug])}}"
                                             title="{{$c_product->name}}">
                                             <figure><img
-                                                    src="{{ asset('assets/images/products') }}/{{$c_product->image}}"
+                                                    src="{{$c_product->image}}"
                                                     width="800" height="800" alt="$c_product->name"></figure>
                                         </a>
                                     </div>
