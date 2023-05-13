@@ -45,6 +45,7 @@ deploy:
       # the storage folder shouldn't be synced after first deployment, because there
       # are files inside from running the Laravel app (e.g. database)
       - storage
+      - database.myslql
 
     # commands that are executed on the runtime before new files are copied
     pre-deployment-remote-commands:
