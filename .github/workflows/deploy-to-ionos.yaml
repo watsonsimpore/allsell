@@ -86,7 +86,7 @@ jobs:
         run: echo SSH_USERNAME_SECRET=IONOS_DEPLOYMENT_`echo ${{ matrix.deployment-id }} | tr '[:lower:]' '[:upper:]' | tr '-' '_'`_SSH_USERNAME >> $GITHUB_ENV
 
       - name: Deploy to IONOS
-        uses: ionos-deploy-now/deploy-to-ionos-action@v2
+        uses: ionos-deploy-now/deploy-to-ionos-action@v1
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
