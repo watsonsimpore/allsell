@@ -1,4 +1,4 @@
-version: 2.0.1
+version: 1.0.0
 deploy:
   # comment in one of the following lines to force the use of the recurring or bootstrap configuration
   #  force: recurring
